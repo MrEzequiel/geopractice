@@ -1,14 +1,16 @@
 import type { GetStaticProps, NextPage } from "next"
+
 import Container from "@mui/material/Container"
 import Typography from "@mui/material/Typography"
+import { Box } from "@mui/material"
+
 import { Game } from "../src/interfaces/Game"
-import { Grid } from "@mui/material"
 import GameCard from "../src/components/GameCard"
 
 const games: Game[] = [
   {
     description:
-      "Carros comuns e raros que estão na cobertura oficial do google.",
+      "Em diversas coberturas do google maps é possível ver um padrão de carros, sabendo disso é possível saber instantaneamente em qual região ou país você está localizado. Esse jogo consiste em você treinar seu reconhecimento.",
     image:
       "https://tbzaiuuumjycdssbuhdy.supabase.co/storage/v1/object/public/images/google-car.jpg",
     name: "Google Car",
@@ -23,13 +25,16 @@ const Home: NextPage = () => {
         Games
       </Typography>
 
-      <Grid container spacing={2} mt={2}>
+      <Box
+        display="grid"
+        gap={2}
+        my={2}
+        gridTemplateColumns="repeat(auto-fill, minmax(220px, 1fr))"
+      >
         {games.map(game => (
-          <Grid item xs={4} key={game.slug}>
-            <GameCard game={game} />
-          </Grid>
+          <GameCard game={game} key={game.slug} />
         ))}
-      </Grid>
+      </Box>
     </Container>
   )
 }

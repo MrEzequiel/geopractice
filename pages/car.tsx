@@ -1,19 +1,21 @@
+import { useMemo, useState } from "react"
 import { NextPage } from "next"
+import { useRouter } from "next/router"
+
 import {
   Button,
   Card,
   CardActions,
   CardContent,
   Container,
-  Typography
+  Typography,
+  Stack
 } from "@mui/material"
-import cars, { CarType } from "../src/data/car"
-import { CountryType } from "../src/data/countries"
-import { useMemo, useState } from "react"
-import CarCard from "../src/components/CarCard"
-import { Stack } from "@mui/system"
 import { Replay } from "@mui/icons-material"
-import { useRouter } from "next/router"
+
+import CarCard from "../src/components/CarCard"
+import { CountryType } from "../src/data/countries"
+import cars, { CarType } from "../src/data/car"
 
 export interface QuestionCarType extends CarType {
   cityResponse: CountryType | null

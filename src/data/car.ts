@@ -8,6 +8,7 @@ export interface CarType {
   city: CountryType
   image: string
   localization: string
+  hint?: string
 }
 
 const cars: CarType[] = [
@@ -29,7 +30,8 @@ const cars: CarType[] = [
     city: getCountry("GH"),
     image:
       "https://tbzaiuuumjycdssbuhdy.supabase.co/storage/v1/object/public/images/car3.jpg",
-    localization: "https://goo.gl/maps/r44m9iuEiACNpc9d8"
+    localization: "https://goo.gl/maps/r44m9iuEiACNpc9d8",
+    hint: "Este carro faz a cobertura da reserva: 'Shai Hills Production Reserve' em Ghana"
   },
   {
     city: getCountry("KE"),
@@ -57,7 +59,8 @@ const cars: CarType[] = [
     image:
       "https://tbzaiuuumjycdssbuhdy.supabase.co/storage/v1/object/public/images/car7.jpg",
     localization:
-      "https://maps.google.com/maps?q=&layer=c&cbll=-22.7783239,31.195407"
+      "https://maps.google.com/maps?q=&layer=c&cbll=-22.7783239,31.195407",
+    hint: "Este carro faz a cobertura do Parque Nacional Kruger em South Africa"
   },
   {
     city: getCountry("UG"),

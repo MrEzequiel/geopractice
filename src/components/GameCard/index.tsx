@@ -9,7 +9,7 @@ import {
 } from "@mui/material"
 import { green, grey } from "@mui/material/colors"
 import { useRouter } from "next/router"
-import { FC } from "react"
+import { FC, useState } from "react"
 import { Game } from "../../interfaces/Game"
 
 interface GameCardProps {
@@ -18,6 +18,7 @@ interface GameCardProps {
 
 const GameCard: FC<GameCardProps> = ({ game }) => {
   const router = useRouter()
+  const [readMore, setReadMore] = useState(false)
 
   return (
     <Card>
@@ -72,7 +73,20 @@ const GameCard: FC<GameCardProps> = ({ game }) => {
 
       <CardContent sx={{ pt: 4 }}>
         <Typography variant="body2" color="text.secondary">
-          {game.description}
+          {game.description.length >= 100 && !readMore
+            ? `${game.description.substring(0, 100)}...`
+            : game.description}{" "}
+          {!readMore && game.description.length >= 100 && (
+            <Typography
+              component="span"
+              variant="body2"
+              fontWeight="bold"
+              sx={{ cursor: "pointer" }}
+              onClick={() => setReadMore(true)}
+            >
+              Ler mais
+            </Typography>
+          )}
         </Typography>
       </CardContent>
     </Card>

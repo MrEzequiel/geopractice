@@ -12,7 +12,7 @@ import {
   TextField,
   Typography
 } from "@mui/material"
-import { FC, FormEvent, useState } from "react"
+import { FC, FormEvent, useEffect, useRef, useState } from "react"
 import { QuestionCarType } from "../../../pages/car"
 import countries, { CountryType } from "../../data/countries"
 
@@ -31,9 +31,15 @@ const CarCard: FC<CarCardProps> = ({
   onSubmit,
   onNextQuestion
 }) => {
+  const inputRef = useRef<HTMLInputElement>()
   const [selectedCity, setSelectedCity] = useState<CountryType | null>(
     questionCar.cityResponse
   )
+
+  useEffect(() => {
+    if (!inputRef.current || questionCar.revealed) return
+    inputRef.current?.focus()
+  }, [questionCar])
 
   const handleSubmit = () => {
     if (!selectedCity) return
@@ -49,10 +55,10 @@ const CarCard: FC<CarCardProps> = ({
 
       <CardMedia
         component="img"
-        height={500}
-        sx={{ objectFit: "cover" }}
+        sx={{ objectFit: "contain", height: "60vh" }}
         image={questionCar.image}
       />
+      <Divider />
 
       <CardContent>
         <Collapse in={questionCar.revealed}>
@@ -125,12 +131,14 @@ const CarCard: FC<CarCardProps> = ({
             renderInput={params => (
               <TextField
                 {...params}
+                inputRef={inputRef}
                 label="Selecione o país"
                 fullWidth
+                autoFocus
                 inputProps={{
                   ...params.inputProps,
                   autoCorrect: "false",
-                  autocomplete: "off" // disable autocomplete and autofill
+                  autoComplete: "off" // disable autocomplete and autofill
                 }}
               />
             )}
