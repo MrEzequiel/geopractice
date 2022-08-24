@@ -16,6 +16,7 @@ import { Replay } from "@mui/icons-material"
 import CarCard from "../src/components/CarCard"
 import { CountryType } from "../src/data/countries"
 import cars, { CarType } from "../src/data/car"
+import GameFinished from "../src/components/GameFinished"
 
 export interface QuestionCarType extends CarType {
   cityResponse: CountryType | null
@@ -110,39 +111,7 @@ const Car: NextPage = () => {
         />
       )}
 
-      {finishedGame && (
-        <Card sx={{ position: "relative", mb: 2 }}>
-          <CardContent>
-            <Typography variant="h5" textAlign="center">
-              Jogo finalizado
-            </Typography>
-
-            <Stack direction="row" alignItems="center" justifyContent="center">
-              <Typography
-                variant="h3"
-                color={correctQuestions >= 7 ? "success.main" : "error.main"}
-              >
-                {correctQuestions}
-                <Typography component="span" variant="h3" color="GrayText">
-                  {" "}
-                  / {cars.length}
-                </Typography>
-              </Typography>
-            </Stack>
-          </CardContent>
-
-          <CardActions>
-            <Button
-              variant="contained"
-              startIcon={<Replay />}
-              onClick={restartGame}
-            >
-              Reiniciar
-            </Button>
-            <Button onClick={() => router.push("/")}>Voltar</Button>
-          </CardActions>
-        </Card>
-      )}
+      {finishedGame && <GameFinished cars={cars} onRestartGame={restartGame} />}
     </Container>
   )
 }
