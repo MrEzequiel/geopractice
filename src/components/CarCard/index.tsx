@@ -7,7 +7,8 @@ import {
   CardMedia,
   Collapse,
   Divider,
-  Fade,
+  Grow,
+  Modal,
   Stack,
   TextField,
   Typography
@@ -15,6 +16,21 @@ import {
 import { FC, FormEvent, useEffect, useRef, useState } from "react"
 import { QuestionCarType } from "../../../pages/car"
 import countries, { CountryType } from "../../data/countries"
+
+const style = {
+  position: "absolute" as "absolute",
+  top: "50%",
+  left: "50%",
+  transform: "translate(-50%, -50%)",
+  width: "85vw",
+  bgcolor: "background.paper",
+  boxShadow: 24,
+  img: {
+    width: "100%",
+    height: "100%",
+    objectFit: "contain"
+  }
+}
 
 interface CarCardProps {
   questionCar: QuestionCarType
@@ -31,6 +47,8 @@ const CarCard: FC<CarCardProps> = ({
   onSubmit,
   onNextQuestion
 }) => {
+  const [zoomImage, setZoomImage] = useState(false)
+
   const inputRef = useRef<HTMLInputElement>()
   const [selectedCity, setSelectedCity] = useState<CountryType | null>(
     questionCar.cityResponse
@@ -55,9 +73,23 @@ const CarCard: FC<CarCardProps> = ({
 
       <CardMedia
         component="img"
-        sx={{ objectFit: "contain", height: "60vh" }}
+        sx={{ objectFit: "contain", height: "60vh", cursor: "zoom-in" }}
         image={questionCar.image}
+        onClick={() => setZoomImage(true)}
       />
+
+      <Modal
+        keepMounted
+        open={zoomImage}
+        onClose={() => {
+          setZoomImage(false)
+        }}
+      >
+        <Box sx={style}>
+          <img src={questionCar.image} />
+        </Box>
+      </Modal>
+
       <Divider />
 
       <CardContent>
