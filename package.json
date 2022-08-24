@@ -16,6 +16,7 @@
     "@emotion/styled": "latest",
     "@mui/icons-material": "latest",
     "@mui/material": "latest",
+    "@supabase/supabase-js": "^1.35.6",
     "next": "latest",
     "react": "latest",
     "react-dom": "latest"
