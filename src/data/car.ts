@@ -108,8 +108,7 @@ const cars: CarType[] = [
     city: getCountry("LK"),
     image:
       "https://tbzaiuuumjycdssbuhdy.supabase.co/storage/v1/object/public/images/car14.jpg",
-    localization:
-      "https://maps.google.com/maps?q=&layer=c&cbll=8.7952762,80.119114"
+    localization: "https://goo.gl/maps/9GWRMygRyE2FmbPu7"
   },
   {
     city: getCountry("FO"),

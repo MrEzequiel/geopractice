@@ -1,3 +1,4 @@
+import { GpsFixed } from "@mui/icons-material"
 import {
   Autocomplete,
   Box,
@@ -8,6 +9,8 @@ import {
   Collapse,
   Divider,
   Grow,
+  IconButton,
+  Link,
   Modal,
   Stack,
   TextField,
@@ -95,7 +98,7 @@ const CarCard: FC<CarCardProps> = ({
       <CardContent>
         <Collapse in={questionCar.revealed}>
           <Box mb={3} hidden={!questionCar.revealed}>
-            <Stack direction="row" gap={1} mt={1}>
+            <Stack direction="row" alignItems="center" gap={1} mt={1}>
               <Typography
                 color={questionCar.correct ? "success.main" : "error.main"}
               >
@@ -104,11 +107,34 @@ const CarCard: FC<CarCardProps> = ({
               <Divider orientation="vertical" flexItem />
               <img
                 width={40}
+                height={30}
                 loading="lazy"
                 src={`https://flagcdn.com/w40/${questionCar.city.code.toLowerCase()}.png`}
               />{" "}
               {questionCar.city.label}
+              <Link
+                href={questionCar.localization}
+                target="_blank"
+                sx={{ ml: 1 }}
+              >
+                <IconButton>
+                  <GpsFixed />
+                </IconButton>
+              </Link>
             </Stack>
+
+            {questionCar.hint && (
+              <Box
+                p={2}
+                border={1}
+                borderColor="divider"
+                bgcolor="background.paper"
+                mt={1}
+                borderRadius={1}
+              >
+                <Typography variant="body1">{questionCar.hint}</Typography>
+              </Box>
+            )}
 
             <Button
               variant="contained"
