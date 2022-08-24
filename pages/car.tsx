@@ -5,8 +5,6 @@ import {
   CardActions,
   CardContent,
   Container,
-  Popover,
-  Popper,
   Typography
 } from "@mui/material"
 import cars, { CarType } from "../src/data/car"
@@ -15,7 +13,6 @@ import { useMemo, useState } from "react"
 import CarCard from "../src/components/CarCard"
 import { Stack } from "@mui/system"
 import { Replay } from "@mui/icons-material"
-import Link from "next/link"
 import { useRouter } from "next/router"
 
 export interface QuestionCarType extends CarType {
@@ -56,7 +53,7 @@ const Car: NextPage = () => {
     return cars.reduce((acc, item) => (item.correct ? acc + 1 : acc), 0)
   }, [cars])
 
-  const [currentQuestion, setCurrentQuestion] = useState(9)
+  const [currentQuestion, setCurrentQuestion] = useState(0)
   const [finishedGame, setFinishedGame] = useState(false)
 
   const onSubmitQuestion = (city: CountryType) => {
