@@ -85,7 +85,11 @@ const GameFinished: FC<GameFinishedProps> = ({
         <DialogTitle>Seus resultados</DialogTitle>
 
         <DialogContent dividers>
-          <Box display="grid" gap={3} gridTemplateColumns="1fr 1fr">
+          <Box
+            display="grid"
+            gap={3}
+            gridTemplateColumns="repeat(auto-fit, minmax(250px, 1fr))"
+          >
             {cars.map((car, index) => (
               <Box
                 key={index}
