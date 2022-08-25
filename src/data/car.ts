@@ -186,6 +186,56 @@ const cars: CarType[] = [
       "https://tbzaiuuumjycdssbuhdy.supabase.co/storage/v1/object/public/images/car25.jpg",
     localization:
       "https://maps.google.com/maps?q=&layer=c&cbll=-32.561045,-62.8204195"
+  },
+  {
+    city: getCountry("GH"),
+    image:
+      "https://tbzaiuuumjycdssbuhdy.supabase.co/storage/v1/object/public/images/car26.jpg",
+    localization: "https://goo.gl/maps/Xbthghig4UWGhc6m8"
+  },
+  {
+    city: getCountry("GH"),
+    image:
+      "https://tbzaiuuumjycdssbuhdy.supabase.co/storage/v1/object/public/images/car27.jpg",
+    localization: "https://goo.gl/maps/bgEAn1d4c5XErppu7",
+    hint: "Este carro é específico da região de 'Chyulu Hills National Park' em Ghana"
+  },
+  {
+    city: getCountry("GH"),
+    image:
+      "https://tbzaiuuumjycdssbuhdy.supabase.co/storage/v1/object/public/images/car28.jpg",
+    localization: "https://goo.gl/maps/STdUiwU7dphTXhx49",
+    hint: "Este carro é específico da região de 'Lewa Wildlife Conservancy' em Ghana"
+  },
+  {
+    city: getCountry("BT"),
+    image:
+      "https://tbzaiuuumjycdssbuhdy.supabase.co/storage/v1/object/public/images/car29.jpg",
+    localization: "https://goo.gl/maps/8mYmhpga7MRpS3Gr6"
+  },
+  {
+    city: getCountry("VI"),
+    image:
+      "https://tbzaiuuumjycdssbuhdy.supabase.co/storage/v1/object/public/images/car30.jpg",
+    localization: "https://goo.gl/maps/hLFaVFWPN45XF9Wv9"
+  },
+  {
+    city: getCountry("AS"),
+    image:
+      "https://tbzaiuuumjycdssbuhdy.supabase.co/storage/v1/object/public/images/car31.jpg",
+    localization: "https://goo.gl/maps/usstoSjN9mLpm6jS8"
+  },
+  {
+    city: getCountry("RE"),
+    image:
+      "https://tbzaiuuumjycdssbuhdy.supabase.co/storage/v1/object/public/images/car32.jpg",
+    localization: "https://goo.gl/maps/D75bzm28XtafhEoc6"
+  },
+  {
+    city: getCountry("MG"),
+    image:
+      "https://tbzaiuuumjycdssbuhdy.supabase.co/storage/v1/object/public/images/car33.jpg",
+    localization: "https://goo.gl/maps/3YF6fpAaPB1beygi9"
   }
 ]
 
