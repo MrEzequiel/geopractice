@@ -60,7 +60,7 @@ const cars: CarType[] = [
       "https://tbzaiuuumjycdssbuhdy.supabase.co/storage/v1/object/public/images/car7.jpg",
     localization:
       "https://maps.google.com/maps?q=&layer=c&cbll=-22.7783239,31.195407",
-    hint: "Este carro faz a cobertura do Parque Nacional Kruger em South Africa"
+    hint: "Este carro faz a cobertura do 'Parque Nacional Kruger' em South Africa"
   },
   {
     city: getCountry("UG"),
@@ -188,20 +188,20 @@ const cars: CarType[] = [
       "https://maps.google.com/maps?q=&layer=c&cbll=-32.561045,-62.8204195"
   },
   {
-    city: getCountry("GH"),
+    city: getCountry("KE"),
     image:
       "https://tbzaiuuumjycdssbuhdy.supabase.co/storage/v1/object/public/images/car26.jpg",
     localization: "https://goo.gl/maps/Xbthghig4UWGhc6m8"
   },
   {
-    city: getCountry("GH"),
+    city: getCountry("KE"),
     image:
       "https://tbzaiuuumjycdssbuhdy.supabase.co/storage/v1/object/public/images/car27.jpg",
     localization: "https://goo.gl/maps/bgEAn1d4c5XErppu7",
     hint: "Este carro é específico da região de 'Chyulu Hills National Park' em Ghana"
   },
   {
-    city: getCountry("GH"),
+    city: getCountry("KE"),
     image:
       "https://tbzaiuuumjycdssbuhdy.supabase.co/storage/v1/object/public/images/car28.jpg",
     localization: "https://goo.gl/maps/STdUiwU7dphTXhx49",
