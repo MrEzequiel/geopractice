@@ -5,17 +5,18 @@ import {
   Button,
   Card,
   CardContent,
-  CardMedia,
+  CircularProgress,
   Collapse,
   Divider,
-  Grow,
   IconButton,
   Link,
   Modal,
   Stack,
   TextField,
-  Typography
+  Typography,
+  Zoom
 } from "@mui/material"
+import Image from "next/image"
 import { FC, FormEvent, useEffect, useRef, useState } from "react"
 import { QuestionCarType } from "../../../pages/car"
 import countries, { CountryType } from "../../data/countries"
@@ -51,6 +52,7 @@ const CarCard: FC<CarCardProps> = ({
   onNextQuestion
 }) => {
   const [zoomImage, setZoomImage] = useState(false)
+  const [loadingImage, setLoadingImage] = useState(false)
 
   const inputRef = useRef<HTMLInputElement>()
   const [selectedCity, setSelectedCity] = useState<CountryType | null>(
@@ -93,16 +95,45 @@ const CarCard: FC<CarCardProps> = ({
 
   return (
     <Card sx={{ position: "relative", mb: 2 }}>
-      <Box position="absolute" top={0} left={0} bgcolor="primary.main" p={1}>
+      <Box
+        zIndex={8}
+        position="absolute"
+        top={0}
+        left={0}
+        bgcolor="primary.main"
+        p={1}
+      >
         {currentQuestion + 1}/{quantity}
       </Box>
 
-      <CardMedia
-        component="img"
-        sx={{ objectFit: "contain", height: "60vh", cursor: "zoom-in" }}
-        image={questionCar.image}
-        onClick={() => setZoomImage(true)}
-      />
+      <Stack
+        position="relative"
+        height="60vh"
+        alignItems="center"
+        justifyContent="center"
+      >
+        <Image
+          src={questionCar.image}
+          layout="fill"
+          objectFit="contain"
+          quality={90}
+          placeholder="empty"
+          style={{ cursor: "zoom-in" }}
+          onClick={() => setZoomImage(true)}
+          onLoad={() => {
+            setLoadingImage(true)
+          }}
+          onLoadingComplete={() => {
+            setLoadingImage(false)
+          }}
+        />
+
+        {loadingImage && (
+          <Zoom in={loadingImage} timeout={1000}>
+            <CircularProgress />
+          </Zoom>
+        )}
+      </Stack>
 
       <Modal
         keepMounted
