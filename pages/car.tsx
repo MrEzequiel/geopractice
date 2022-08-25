@@ -1,22 +1,26 @@
-import { useMemo, useState } from "react"
+import { useState } from "react"
 import { NextPage } from "next"
-import { useRouter } from "next/router"
 
 import {
+  Box,
   Button,
   Card,
-  CardActions,
   CardContent,
   Container,
-  Typography,
-  Stack
+  Divider,
+  FormControl,
+  InputLabel,
+  MenuItem,
+  Select,
+  Stack,
+  Typography
 } from "@mui/material"
-import { Replay } from "@mui/icons-material"
 
-import CarCard from "../src/components/CarCard"
 import { CountryType } from "../src/data/countries"
 import cars, { CarType } from "../src/data/car"
-import GameFinished from "../src/components/GameFinished"
+import CarGame from "../src/components/CarGame"
+import { games } from "."
+import { Game } from "../src/interfaces/Game"
 
 export interface QuestionCarType extends CarType {
   cityResponse: CountryType | null
@@ -49,70 +53,93 @@ const getRandomCars = (quantity = 10): QuestionCarType[] => {
 }
 
 const Car: NextPage = () => {
-  const router = useRouter()
+  const gameCar = games.find(game => game.slug === "car") as Game
 
-  const [cars, setCars] = useState(() => getRandomCars())
-  const correctQuestions = useMemo(() => {
-    return cars.reduce((acc, item) => (item.correct ? acc + 1 : acc), 0)
-  }, [cars])
+  const [startedGame, setStartedGame] = useState(false)
+  const [quantityRounds, setQuantityRounds] = useState(10)
 
-  const [currentQuestion, setCurrentQuestion] = useState(0)
-  const [finishedGame, setFinishedGame] = useState(false)
-
-  const onSubmitQuestion = (city: CountryType) => {
-    const currentCarQuestion = cars[currentQuestion]
-
-    const correct = currentCarQuestion.city.code === city.code
-    setCars(prevCars =>
-      prevCars.map((car, index) => {
-        if (index === currentQuestion) {
-          return {
-            ...car,
-            cityResponse: city,
-            revealed: true,
-            correct
-          }
-        }
-        return car
-      })
-    )
-  }
-
-  const nextQuestion = () => {
-    const nextQuestion = cars[currentQuestion + 1]
-
-    if (!nextQuestion) {
-      setFinishedGame(true)
-      return
-    }
-
-    setCurrentQuestion(prev => prev + 1)
-  }
-
-  const restartGame = () => {
-    setCurrentQuestion(0)
-    setCars(getRandomCars())
-    setFinishedGame(false)
-  }
+  const optionsRounds: number[] = Array(26)
+    .fill(0)
+    .map((salve, index) => salve + (index + 5))
 
   return (
-    <Container maxWidth="md" sx={{ mt: 3 }}>
-      <Typography variant="h6" gutterBottom>
-        Google Cars
-      </Typography>
+    <>
+      <Container maxWidth="md" sx={{ mt: 3 }}>
+        {!startedGame && (
+          <Card>
+            <CardContent>
+              <Stack direction="row" gap={4} alignItems="center">
+                <Box
+                  flex={1}
+                  borderRadius="50%"
+                  overflow="hidden"
+                  boxShadow={2}
+                  border={2}
+                  borderColor="primary.main"
+                  sx={{ aspectRatio: "1/1" }}
+                >
+                  <img
+                    src={gameCar.image}
+                    style={{
+                      width: "100%",
+                      height: "100%",
+                      objectFit: "cover"
+                    }}
+                  />
+                </Box>
 
-      {!finishedGame && (
-        <CarCard
-          questionCar={cars[currentQuestion]}
-          currentQuestion={currentQuestion}
-          quantity={cars.length}
-          onSubmit={onSubmitQuestion}
-          onNextQuestion={nextQuestion}
-        />
-      )}
+                <Box flex={2}>
+                  <Typography variant="h5" fontWeight={600} gutterBottom>
+                    {gameCar.name}
+                  </Typography>
 
-      {finishedGame && <GameFinished cars={cars} onRestartGame={restartGame} />}
-    </Container>
+                  <Typography variant="body1" color="text.secondary">
+                    {gameCar.description}
+                  </Typography>
+
+                  <Divider sx={{ my: 2 }} />
+
+                  <Stack
+                    direction="row"
+                    alignItems="center"
+                    justifyContent="space-between"
+                  >
+                    <FormControl sx={{ minWidth: 250 }}>
+                      <InputLabel>Quantidade de rodadas</InputLabel>
+                      <Select
+                        MenuProps={{
+                          sx: {
+                            maxHeight: "50vh"
+                          }
+                        }}
+                        value={quantityRounds}
+                        onChange={e =>
+                          setQuantityRounds(Number(e.target.value))
+                        }
+                      >
+                        {optionsRounds.map(round => (
+                          <MenuItem value={round} key={round}>
+                            {round}
+                          </MenuItem>
+                        ))}
+                      </Select>
+                    </FormControl>
+                    <Button
+                      variant="contained"
+                      onClick={() => setStartedGame(true)}
+                    >
+                      Começar
+                    </Button>
+                  </Stack>
+                </Box>
+              </Stack>
+            </CardContent>
+          </Card>
+        )}
+
+        {startedGame && <CarGame quantity={quantityRounds} />}
+      </Container>
+    </>
   )
 }
 

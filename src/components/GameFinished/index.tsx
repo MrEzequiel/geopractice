@@ -18,16 +18,22 @@ import { QuestionCarType } from "../../../pages/car"
 
 interface GameFinishedProps {
   cars: QuestionCarType[]
+  quantityGames: number
   onRestartGame: () => void
 }
 
-const GameFinished: FC<GameFinishedProps> = ({ cars, onRestartGame }) => {
+const GameFinished: FC<GameFinishedProps> = ({
+  cars,
+  onRestartGame,
+  quantityGames
+}) => {
   const router = useRouter()
   const correctQuestions = useMemo(() => {
     return cars.reduce((acc, item) => (item.correct ? acc + 1 : acc), 0)
   }, [cars])
 
   const [showResult, setShowResult] = useState(false)
+  const isMajorityCertain = correctQuestions >= Math.ceil(quantityGames / 2)
 
   return (
     <>
@@ -40,7 +46,7 @@ const GameFinished: FC<GameFinishedProps> = ({ cars, onRestartGame }) => {
           <Stack direction="row" alignItems="center" justifyContent="center">
             <Typography
               variant="h3"
-              color={correctQuestions >= 7 ? "success.main" : "error.main"}
+              color={isMajorityCertain ? "success.main" : "error.main"}
             >
               {correctQuestions}
               <Typography component="span" variant="h3" color="GrayText">

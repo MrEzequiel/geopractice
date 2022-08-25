@@ -7,7 +7,7 @@ import { Box } from "@mui/material"
 import { Game } from "../src/interfaces/Game"
 import GameCard from "../src/components/GameCard"
 
-const games: Game[] = [
+export const games: Game[] = [
   {
     description:
       "Em diversas coberturas do google maps é possível ver um padrão de carros, sabendo disso é possível saber instantaneamente em qual região ou país você está localizado. Esse jogo consiste em você treinar seu reconhecimento.",
