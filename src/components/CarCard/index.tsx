@@ -56,6 +56,12 @@ const CarCard: FC<CarCardProps> = ({
   const [selectedCity, setSelectedCity] = useState<CountryType | null>(
     questionCar.cityResponse
   )
+  const [inputValue, setInputValue] = useState("")
+
+  const clearAutoComplete = () => {
+    setInputValue("")
+    setSelectedCity(null)
+  }
 
   useEffect(() => {
     if (!inputRef.current || questionCar.revealed) return
@@ -65,8 +71,25 @@ const CarCard: FC<CarCardProps> = ({
   const handleSubmit = () => {
     if (!selectedCity) return
     onSubmit(selectedCity)
-    window.scrollTo(0, document.body.scrollHeight)
   }
+
+  useEffect(() => {
+    if (!questionCar.revealed) return
+
+    const handleKeyPress = (e: KeyboardEvent) => {
+      if (e.code === "Space") {
+        e.preventDefault()
+        clearAutoComplete()
+        onNextQuestion()
+      }
+    }
+
+    window.addEventListener("keypress", handleKeyPress)
+
+    return () => {
+      window.removeEventListener("keypress", handleKeyPress)
+    }
+  }, [questionCar])
 
   return (
     <Card sx={{ position: "relative", mb: 2 }}>
@@ -141,7 +164,7 @@ const CarCard: FC<CarCardProps> = ({
               fullWidth
               sx={{ mt: 2 }}
               onClick={() => {
-                setSelectedCity(null)
+                clearAutoComplete()
                 onNextQuestion()
               }}
             >
@@ -169,6 +192,10 @@ const CarCard: FC<CarCardProps> = ({
             onChange={(_, newValue: CountryType | null) =>
               setSelectedCity(newValue)
             }
+            inputValue={inputValue}
+            onInputChange={(event, newInputValue) => {
+              setInputValue(newInputValue)
+            }}
             getOptionLabel={option => option.label}
             renderOption={(props, option) => (
               <Box

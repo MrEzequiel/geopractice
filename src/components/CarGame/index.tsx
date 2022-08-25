@@ -1,6 +1,6 @@
 import { FC, useState } from "react"
 
-import { Box, Container, Typography } from "@mui/material"
+import { Box, Typography } from "@mui/material"
 
 import { QuestionCarType } from "../../../pages/car"
 import cars from "../../data/car"
