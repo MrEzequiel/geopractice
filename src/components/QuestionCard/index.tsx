@@ -1,3 +1,4 @@
+import { FC, FormEvent, useEffect, useRef, useState } from "react"
 import { GpsFixed } from "@mui/icons-material"
 import {
   Autocomplete,
@@ -17,9 +18,8 @@ import {
   Zoom
 } from "@mui/material"
 import Image from "next/image"
-import { FC, FormEvent, useEffect, useRef, useState } from "react"
-import { QuestionCarType } from "../../../pages/car"
 import countries, { CountryType } from "../../data/countries"
+import { GameQuestion } from "../../interfaces/Game"
 
 const style = {
   position: "absolute" as "absolute",
@@ -36,17 +36,17 @@ const style = {
   }
 }
 
-interface CarCardProps {
-  questionCar: QuestionCarType
+interface QuestionCardProps {
+  gameQuestion: GameQuestion
+  currentQuestionIndex: number
   quantity: number
-  currentQuestion: number
   onSubmit: (city: CountryType) => void
   onNextQuestion: () => void
 }
 
-const CarCard: FC<CarCardProps> = ({
-  questionCar,
-  currentQuestion,
+const QuestionCard: FC<QuestionCardProps> = ({
+  gameQuestion,
+  currentQuestionIndex,
   quantity,
   onSubmit,
   onNextQuestion
@@ -56,7 +56,7 @@ const CarCard: FC<CarCardProps> = ({
 
   const inputRef = useRef<HTMLInputElement>()
   const [selectedCity, setSelectedCity] = useState<CountryType | null>(
-    questionCar.cityResponse
+    gameQuestion.cityResponse
   )
   const [inputValue, setInputValue] = useState("")
 
@@ -66,9 +66,9 @@ const CarCard: FC<CarCardProps> = ({
   }
 
   useEffect(() => {
-    if (!inputRef.current || questionCar.revealed) return
+    if (!inputRef.current || gameQuestion.revealed) return
     inputRef.current?.focus()
-  }, [questionCar])
+  }, [gameQuestion])
 
   const handleSubmit = () => {
     if (!selectedCity) return
@@ -76,7 +76,7 @@ const CarCard: FC<CarCardProps> = ({
   }
 
   useEffect(() => {
-    if (!questionCar.revealed) return
+    if (!gameQuestion.revealed) return
 
     const handleKeyPress = (e: KeyboardEvent) => {
       if (e.code === "Space") {
@@ -91,7 +91,7 @@ const CarCard: FC<CarCardProps> = ({
     return () => {
       window.removeEventListener("keypress", handleKeyPress)
     }
-  }, [questionCar])
+  }, [gameQuestion])
 
   return (
     <Card sx={{ position: "relative", mb: 2 }}>
@@ -103,7 +103,7 @@ const CarCard: FC<CarCardProps> = ({
         bgcolor="primary.main"
         p={1}
       >
-        {currentQuestion + 1}/{quantity}
+        {currentQuestionIndex + 1}/{quantity}
       </Box>
 
       <Stack
@@ -113,7 +113,7 @@ const CarCard: FC<CarCardProps> = ({
         justifyContent="center"
       >
         <Image
-          src={questionCar.image}
+          src={gameQuestion.image}
           layout="fill"
           objectFit="contain"
           quality={90}
@@ -143,31 +143,31 @@ const CarCard: FC<CarCardProps> = ({
         }}
       >
         <Box sx={style}>
-          <img src={questionCar.image} />
+          <img src={gameQuestion.image} />
         </Box>
       </Modal>
 
       <Divider />
 
       <CardContent>
-        <Collapse in={questionCar.revealed}>
-          <Box mb={3} hidden={!questionCar.revealed}>
+        <Collapse in={gameQuestion.revealed}>
+          <Box mb={3} hidden={!gameQuestion.revealed}>
             <Stack direction="row" alignItems="center" gap={1} mt={1}>
               <Typography
-                color={questionCar.correct ? "success.main" : "error.main"}
+                color={gameQuestion.correct ? "success.main" : "error.main"}
               >
-                {questionCar.correct ? "Você acertou" : "Você errou"}
+                {gameQuestion.correct ? "Você acertou" : "Você errou"}
               </Typography>
               <Divider orientation="vertical" flexItem />
               <img
                 width={40}
                 height={30}
                 loading="lazy"
-                src={`https://flagcdn.com/w40/${questionCar.city.code.toLowerCase()}.png`}
+                src={`https://flagcdn.com/w40/${gameQuestion.city.code.toLowerCase()}.png`}
               />{" "}
-              {questionCar.city.label}
+              {gameQuestion.city.label}
               <Link
-                href={questionCar.localization}
+                href={gameQuestion.localization}
                 target="_blank"
                 sx={{ ml: 1 }}
               >
@@ -177,7 +177,7 @@ const CarCard: FC<CarCardProps> = ({
               </Link>
             </Stack>
 
-            {questionCar.hint && (
+            {gameQuestion.hint && (
               <Box
                 p={2}
                 border={1}
@@ -186,7 +186,7 @@ const CarCard: FC<CarCardProps> = ({
                 mt={1}
                 borderRadius={1}
               >
-                <Typography variant="body1">{questionCar.hint}</Typography>
+                <Typography variant="body1">{gameQuestion.hint}</Typography>
               </Box>
             )}
 
@@ -218,7 +218,7 @@ const CarCard: FC<CarCardProps> = ({
             options={countries}
             fullWidth
             autoHighlight
-            disabled={questionCar.revealed}
+            disabled={gameQuestion.revealed}
             value={selectedCity}
             onChange={(_, newValue: CountryType | null) =>
               setSelectedCity(newValue)
@@ -263,7 +263,7 @@ const CarCard: FC<CarCardProps> = ({
           <Button
             variant="contained"
             type="submit"
-            disabled={questionCar.revealed || !selectedCity}
+            disabled={gameQuestion.revealed || !selectedCity}
           >
             Enviar
           </Button>
@@ -273,4 +273,4 @@ const CarCard: FC<CarCardProps> = ({
   )
 }
 
-export default CarCard
+export default QuestionCard

@@ -1,5 +1,5 @@
 import { useState } from "react"
-import { NextPage } from "next"
+import { GetStaticPaths, GetStaticProps, NextPage } from "next"
 
 import {
   Box,
@@ -16,45 +16,41 @@ import {
   Typography
 } from "@mui/material"
 
-import { CountryType } from "../src/data/countries"
-import cars, { CarType } from "../src/data/car"
-import CarGame from "../src/components/CarGame"
-import { games } from "."
-import { Game } from "../src/interfaces/Game"
+import gameList from "../src/data/gameList"
 
-export interface QuestionCarType extends CarType {
-  cityResponse: CountryType | null
-  correct: boolean
-  revealed: boolean
-}
+import GameEngine from "../src/components/GameEngine"
+import { GameInformation } from "../src/interfaces/Game"
+import Head from "next/head"
 
-const getRandomCars = (quantity = 10): QuestionCarType[] => {
-  const quantityCars = cars.length
-  const randomCarsIndexs: number[] = []
-
-  const getNumberRandom = () => Math.floor(Math.random() * quantityCars)
-
-  while (randomCarsIndexs.length !== quantity) {
-    let random = getNumberRandom()
-
-    while (randomCarsIndexs.some(index => index === random)) {
-      random = getNumberRandom()
-    }
-
-    randomCarsIndexs.push(random)
-  }
-
-  return randomCarsIndexs.map(index => ({
-    ...cars[index],
-    correct: false,
-    revealed: false,
-    cityResponse: null
+export const getStaticPaths: GetStaticPaths = async () => {
+  const paths = gameList.map(game => ({
+    params: { slug: game.slug }
   }))
+
+  return {
+    paths,
+    fallback: false
+  }
 }
 
-const Car: NextPage = () => {
-  const gameCar = games.find(game => game.slug === "car") as Game
+export const getStaticProps: GetStaticProps = async ctx => {
+  const slug = ctx.params?.slug as string
+  const gameInformation = gameList.find(
+    game => game.slug === slug
+  ) as GameInformation
 
+  return {
+    props: {
+      gameInformation
+    }
+  }
+}
+
+interface GamePageProps {
+  gameInformation: GameInformation
+}
+
+const GamePage: NextPage<GamePageProps> = ({ gameInformation }) => {
   const [startedGame, setStartedGame] = useState(false)
   const [quantityRounds, setQuantityRounds] = useState(10)
 
@@ -64,6 +60,10 @@ const Car: NextPage = () => {
 
   return (
     <>
+      <Head>
+        <title>{gameInformation.name} | GeoPractice</title>
+      </Head>
+
       <Container maxWidth="md" sx={{ mt: 3 }}>
         {!startedGame && (
           <Card>
@@ -79,7 +79,7 @@ const Car: NextPage = () => {
                   sx={{ aspectRatio: "1/1" }}
                 >
                   <img
-                    src={gameCar.image}
+                    src={gameInformation.image}
                     style={{
                       width: "100%",
                       height: "100%",
@@ -90,11 +90,11 @@ const Car: NextPage = () => {
 
                 <Box flex={2}>
                   <Typography variant="h5" fontWeight={600} gutterBottom>
-                    {gameCar.name}
+                    {gameInformation.name}
                   </Typography>
 
                   <Typography variant="body1" color="text.secondary">
-                    {gameCar.description}
+                    {gameInformation.description}
                   </Typography>
 
                   <Divider sx={{ my: 2 }} />
@@ -137,10 +137,16 @@ const Car: NextPage = () => {
           </Card>
         )}
 
-        {startedGame && <CarGame quantity={quantityRounds} />}
+        {startedGame && (
+          <GameEngine
+            quantity={quantityRounds}
+            dataGame={gameInformation.data}
+            title={gameInformation.name}
+          />
+        )}
       </Container>
     </>
   )
 }
 
-export default Car
+export default GamePage

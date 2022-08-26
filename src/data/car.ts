@@ -1,61 +1,51 @@
-import countries, { CountryType } from "./countries"
+import { GameData } from "../interfaces/Game"
+import getCountryByCode from "../utils/getCountryByCode"
 
-const getCountry = (code: string) => {
-  return countries.find(country => country.code === code) as CountryType
-}
-
-export interface CarType {
-  city: CountryType
-  image: string
-  localization: string
-  hint?: string
-}
-
-const cars: CarType[] = [
+const cars: GameData[] = [
   {
-    city: getCountry("BW"),
+    city: getCountryByCode("BW"),
     image:
       "https://tbzaiuuumjycdssbuhdy.supabase.co/storage/v1/object/public/images/car1.jpg",
     localization:
       "https://maps.google.com/maps?q=&layer=c&cbll=-22.4099968,21.7322219"
   },
   {
-    city: getCountry("GH"),
+    city: getCountryByCode("GH"),
     image:
       "https://tbzaiuuumjycdssbuhdy.supabase.co/storage/v1/object/public/images/car2.jpg",
     localization:
       "https://maps.google.com/maps?q=&layer=c&cbll=10.5690499,-0.8333561"
   },
   {
-    city: getCountry("GH"),
+    city: getCountryByCode("GH"),
     image:
       "https://tbzaiuuumjycdssbuhdy.supabase.co/storage/v1/object/public/images/car3.jpg",
     localization: "https://goo.gl/maps/r44m9iuEiACNpc9d8",
     hint: "Este carro faz a cobertura da reserva: 'Shai Hills Production Reserve' em Ghana"
   },
   {
-    city: getCountry("KE"),
+    city: getCountryByCode("KE"),
     image:
       "https://tbzaiuuumjycdssbuhdy.supabase.co/storage/v1/object/public/images/car4.jpg",
     localization:
       "https://maps.google.com/maps?q=&layer=c&cbll=1.1222853,37.5977533"
   },
   {
-    city: getCountry("NG"),
+    city: getCountryByCode("NG"),
     image:
       "https://tbzaiuuumjycdssbuhdy.supabase.co/storage/v1/object/public/images/car5.jpg",
     localization:
       "https://maps.google.com/maps?q=&layer=c&cbll=9.0180809,7.325311"
   },
   {
-    city: getCountry("SN"),
+    city: getCountryByCode("SN"),
     image:
       "https://tbzaiuuumjycdssbuhdy.supabase.co/storage/v1/object/public/images/car6.jpg",
     localization:
       "https://maps.google.com/maps?q=&layer=c&cbll=14.2419607,-16.2708324"
   },
   {
-    city: getCountry("ZA"),
+    city: getCountryByCode("ZA"),
     image:
       "https://tbzaiuuumjycdssbuhdy.supabase.co/storage/v1/object/public/images/car7.jpg",
     localization:
@@ -63,176 +53,176 @@ const cars: CarType[] = [
     hint: "Este carro faz a cobertura do 'Parque Nacional Kruger' em South Africa"
   },
   {
-    city: getCountry("UG"),
+    city: getCountryByCode("UG"),
     image:
       "https://tbzaiuuumjycdssbuhdy.supabase.co/storage/v1/object/public/images/car8.jpg",
     localization:
       "https://maps.google.com/maps?q=&layer=c&cbll=0.3796795,32.7287236"
   },
   {
-    city: getCountry("BD"),
+    city: getCountryByCode("BD"),
     image:
       "https://tbzaiuuumjycdssbuhdy.supabase.co/storage/v1/object/public/images/car9.jpg",
     localization:
       "https://maps.google.com/maps?q=&layer=c&cbll=24.9014665,91.8694781"
   },
   {
-    city: getCountry("KG"),
+    city: getCountryByCode("KG"),
     image:
       "https://tbzaiuuumjycdssbuhdy.supabase.co/storage/v1/object/public/images/car10.jpg",
     localization:
       "https://maps.google.com/maps?q=&layer=c&cbll=40.544319,72.8965993"
   },
   {
-    city: getCountry("LA"),
+    city: getCountryByCode("LA"),
     image:
       "https://tbzaiuuumjycdssbuhdy.supabase.co/storage/v1/object/public/images/car11.jpg",
     localization:
       "https://maps.google.com/maps?q=&layer=c&cbll=19.8862248,102.1402474"
   },
   {
-    city: getCountry("MN"),
+    city: getCountryByCode("MN"),
     image:
       "https://tbzaiuuumjycdssbuhdy.supabase.co/storage/v1/object/public/images/car12.jpg",
     localization:
       "https://maps.google.com/maps?q=&layer=c&cbll=45.7007432,106.100072"
   },
   {
-    city: getCountry("MN"),
+    city: getCountryByCode("MN"),
     image:
       "https://tbzaiuuumjycdssbuhdy.supabase.co/storage/v1/object/public/images/car13.jpg",
     localization:
       "https://maps.google.com/maps?q=&layer=c&cbll=47.7702901,107.2508454"
   },
   {
-    city: getCountry("LK"),
+    city: getCountryByCode("LK"),
     image:
       "https://tbzaiuuumjycdssbuhdy.supabase.co/storage/v1/object/public/images/car14.jpg",
     localization: "https://goo.gl/maps/9GWRMygRyE2FmbPu7"
   },
   {
-    city: getCountry("FO"),
+    city: getCountryByCode("FO"),
     image:
       "https://tbzaiuuumjycdssbuhdy.supabase.co/storage/v1/object/public/images/car15.jpg",
     localization:
       "https://maps.google.com/maps?q=&layer=c&cbll=61.823448,-6.7239479"
   },
   {
-    city: getCountry("IE"),
+    city: getCountryByCode("IE"),
     image:
       "https://tbzaiuuumjycdssbuhdy.supabase.co/storage/v1/object/public/images/car16.jpg",
     localization:
       "https://maps.google.com/maps?q=&layer=c&cbll=53.3765233,-6.2543704"
   },
   {
-    city: getCountry("UA"),
+    city: getCountryByCode("UA"),
     image:
       "https://tbzaiuuumjycdssbuhdy.supabase.co/storage/v1/object/public/images/car17.jpg",
     localization:
       "https://maps.google.com/maps?q=&layer=c&cbll=49.046311,28.7152758"
   },
   {
-    city: getCountry("BM"),
+    city: getCountryByCode("BM"),
     image:
       "https://tbzaiuuumjycdssbuhdy.supabase.co/storage/v1/object/public/images/car18.jpg",
     localization:
       "https://maps.google.com/maps?q=&layer=c&cbll=49.046311,28.7152758"
   },
   {
-    city: getCountry("CW"),
+    city: getCountryByCode("CW"),
     image:
       "https://tbzaiuuumjycdssbuhdy.supabase.co/storage/v1/object/public/images/car19.jpg",
     localization:
       "https://maps.google.com/maps?q=&layer=c&cbll=12.1816696,-68.991764"
   },
   {
-    city: getCountry("DO"),
+    city: getCountryByCode("DO"),
     image:
       "https://tbzaiuuumjycdssbuhdy.supabase.co/storage/v1/object/public/images/car20.jpg",
     localization:
       "https://maps.google.com/maps?q=&layer=c&cbll=18.4652826,-69.8192245"
   },
   {
-    city: getCountry("GL"),
+    city: getCountryByCode("GL"),
     image:
       "https://tbzaiuuumjycdssbuhdy.supabase.co/storage/v1/object/public/images/car21.jpg",
     localization:
       "https://maps.google.com/maps?q=&layer=c&cbll=64.1866474,-51.7033495"
   },
   {
-    city: getCountry("GT"),
+    city: getCountryByCode("GT"),
     image:
       "https://tbzaiuuumjycdssbuhdy.supabase.co/storage/v1/object/public/images/car22.jpg",
     localization:
       "https://maps.google.com/maps?q=&layer=c&cbll=14.6540018,-90.4281064"
   },
   {
-    city: getCountry("VI"),
+    city: getCountryByCode("VI"),
     image:
       "https://tbzaiuuumjycdssbuhdy.supabase.co/storage/v1/object/public/images/car23.jpg",
     localization:
       "https://maps.google.com/maps?q=&layer=c&cbll=18.3355983,-64.9066171"
   },
   {
-    city: getCountry("AS"),
+    city: getCountryByCode("AS"),
     image:
       "https://tbzaiuuumjycdssbuhdy.supabase.co/storage/v1/object/public/images/car24.jpg",
     localization:
       "https://maps.google.com/maps?q=&layer=c&cbll=-14.2739146,-170.6640509"
   },
   {
-    city: getCountry("AR"),
+    city: getCountryByCode("AR"),
     image:
       "https://tbzaiuuumjycdssbuhdy.supabase.co/storage/v1/object/public/images/car25.jpg",
     localization:
       "https://maps.google.com/maps?q=&layer=c&cbll=-32.561045,-62.8204195"
   },
   {
-    city: getCountry("KE"),
+    city: getCountryByCode("KE"),
     image:
       "https://tbzaiuuumjycdssbuhdy.supabase.co/storage/v1/object/public/images/car26.jpg",
     localization: "https://goo.gl/maps/Xbthghig4UWGhc6m8"
   },
   {
-    city: getCountry("KE"),
+    city: getCountryByCode("KE"),
     image:
       "https://tbzaiuuumjycdssbuhdy.supabase.co/storage/v1/object/public/images/car27.jpg",
     localization: "https://goo.gl/maps/bgEAn1d4c5XErppu7",
     hint: "Este carro é específico da região de 'Chyulu Hills National Park' em Ghana"
   },
   {
-    city: getCountry("KE"),
+    city: getCountryByCode("KE"),
     image:
       "https://tbzaiuuumjycdssbuhdy.supabase.co/storage/v1/object/public/images/car28.jpg",
     localization: "https://goo.gl/maps/STdUiwU7dphTXhx49",
     hint: "Este carro é específico da região de 'Lewa Wildlife Conservancy' em Ghana"
   },
   {
-    city: getCountry("BT"),
+    city: getCountryByCode("BT"),
     image:
       "https://tbzaiuuumjycdssbuhdy.supabase.co/storage/v1/object/public/images/car29.jpg",
     localization: "https://goo.gl/maps/8mYmhpga7MRpS3Gr6"
   },
   {
-    city: getCountry("VI"),
+    city: getCountryByCode("VI"),
     image:
       "https://tbzaiuuumjycdssbuhdy.supabase.co/storage/v1/object/public/images/car30.jpg",
     localization: "https://goo.gl/maps/hLFaVFWPN45XF9Wv9"
   },
   {
-    city: getCountry("AS"),
+    city: getCountryByCode("AS"),
     image:
       "https://tbzaiuuumjycdssbuhdy.supabase.co/storage/v1/object/public/images/car31.jpg",
     localization: "https://goo.gl/maps/usstoSjN9mLpm6jS8"
   },
   {
-    city: getCountry("RE"),
+    city: getCountryByCode("RE"),
     image:
       "https://tbzaiuuumjycdssbuhdy.supabase.co/storage/v1/object/public/images/car32.jpg",
     localization: "https://goo.gl/maps/D75bzm28XtafhEoc6"
   },
   {
-    city: getCountry("MG"),
+    city: getCountryByCode("MG"),
     image:
       "https://tbzaiuuumjycdssbuhdy.supabase.co/storage/v1/object/public/images/car33.jpg",
     localization: "https://goo.gl/maps/3YF6fpAaPB1beygi9"

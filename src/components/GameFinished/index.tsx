@@ -1,4 +1,6 @@
-import { Replay } from "@mui/icons-material"
+import { FC, useMemo, useState } from "react"
+import { useRouter } from "next/router"
+
 import {
   Box,
   Button,
@@ -12,25 +14,27 @@ import {
   Stack,
   Typography
 } from "@mui/material"
-import { useRouter } from "next/router"
-import { FC, useMemo, useState } from "react"
-import { QuestionCarType } from "../../../pages/car"
+import { Replay } from "@mui/icons-material"
+import { GameQuestion } from "../../interfaces/Game"
 
 interface GameFinishedProps {
-  cars: QuestionCarType[]
+  gameQuestions: GameQuestion[]
   quantityGames: number
   onRestartGame: () => void
 }
 
 const GameFinished: FC<GameFinishedProps> = ({
-  cars,
+  gameQuestions,
   onRestartGame,
   quantityGames
 }) => {
   const router = useRouter()
   const correctQuestions = useMemo(() => {
-    return cars.reduce((acc, item) => (item.correct ? acc + 1 : acc), 0)
-  }, [cars])
+    return gameQuestions.reduce(
+      (acc, item) => (item.correct ? acc + 1 : acc),
+      0
+    )
+  }, [gameQuestions])
 
   const [showResult, setShowResult] = useState(false)
   const isMajorityCertain = correctQuestions >= Math.ceil(quantityGames / 2)
@@ -51,7 +55,7 @@ const GameFinished: FC<GameFinishedProps> = ({
               {correctQuestions}
               <Typography component="span" variant="h3" color="GrayText">
                 {" "}
-                / {cars.length}
+                / {gameQuestions.length}
               </Typography>
             </Typography>
           </Stack>
@@ -90,12 +94,14 @@ const GameFinished: FC<GameFinishedProps> = ({
             gap={3}
             gridTemplateColumns="repeat(auto-fit, minmax(250px, 1fr))"
           >
-            {cars.map((car, index) => (
+            {gameQuestions.map((gameQuestion, index) => (
               <Box
                 key={index}
                 bgcolor="background.paper"
                 border={1}
-                borderColor={car.correct ? "success.main" : "error.main"}
+                borderColor={
+                  gameQuestion.correct ? "success.main" : "error.main"
+                }
               >
                 <Stack
                   direction="row"
@@ -108,14 +114,14 @@ const GameFinished: FC<GameFinishedProps> = ({
                   <img
                     height={20}
                     loading="lazy"
-                    src={`https://flagcdn.com/w40/${car.city.code.toLowerCase()}.png`}
+                    src={`https://flagcdn.com/w40/${gameQuestion.city.code.toLowerCase()}.png`}
                   />{" "}
-                  {car.city.label}
+                  {gameQuestion.city.label}
                 </Stack>
 
                 <Stack border={1} borderColor="divider">
                   <img
-                    src={car.image}
+                    src={gameQuestion.image}
                     style={{
                       width: "100%",
                       height: "100%",
@@ -124,7 +130,7 @@ const GameFinished: FC<GameFinishedProps> = ({
                   />
                 </Stack>
 
-                {!car.correct && car.cityResponse && (
+                {!gameQuestion.correct && gameQuestion.cityResponse && (
                   <Stack
                     direction="row"
                     justifyContent="center"
@@ -136,9 +142,9 @@ const GameFinished: FC<GameFinishedProps> = ({
                     <img
                       height={20}
                       loading="lazy"
-                      src={`https://flagcdn.com/w40/${car.cityResponse.code.toLowerCase()}.png`}
+                      src={`https://flagcdn.com/w40/${gameQuestion.cityResponse.code.toLowerCase()}.png`}
                     />{" "}
-                    {car.cityResponse.label}
+                    {gameQuestion.cityResponse.label}
                   </Stack>
                 )}
               </Box>

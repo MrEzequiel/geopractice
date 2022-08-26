@@ -1,4 +1,6 @@
-import { PlayArrow } from "@mui/icons-material"
+import { FC, useState } from "react"
+import { useRouter } from "next/router"
+
 import {
   Box,
   Card,
@@ -7,13 +9,13 @@ import {
   Stack,
   Typography
 } from "@mui/material"
+import { PlayArrow } from "@mui/icons-material"
 import { green, grey } from "@mui/material/colors"
-import { useRouter } from "next/router"
-import { FC, useState } from "react"
-import { Game } from "../../interfaces/Game"
+
+import { GameInformation } from "../../interfaces/Game"
 
 interface GameCardProps {
-  game: Game
+  game: GameInformation
 }
 
 const GameCard: FC<GameCardProps> = ({ game }) => {
@@ -64,7 +66,7 @@ const GameCard: FC<GameCardProps> = ({ game }) => {
               width: 40,
               height: 40
             }}
-            onClick={() => router.push("/car")}
+            onClick={() => router.push(`/${game.slug}`)}
           >
             <PlayArrow />
           </IconButton>
