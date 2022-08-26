@@ -344,7 +344,7 @@ const countries: readonly CountryType[] = [
     label: "Syrian Arab Republic",
     phone: "963"
   },
-  { code: "SZ", label: "Swaziland", phone: "268" },
+  { code: "SZ", label: "Eswatini", phone: "268" },
   {
     code: "TC",
     label: "Turks and Caicos Islands",
