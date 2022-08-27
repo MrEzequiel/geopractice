@@ -26,7 +26,8 @@ const style = {
   top: "50%",
   left: "50%",
   transform: "translate(-50%, -50%)",
-  width: "85vw",
+  width: "90vw",
+  height: "90vh",
   bgcolor: "background.paper",
   boxShadow: 24,
   img: {
@@ -143,7 +144,7 @@ const QuestionCard: FC<QuestionCardProps> = ({
         }}
       >
         <Box sx={style}>
-          <img src={gameQuestion.image} />
+          <img src={gameQuestion.image} />{" "}
         </Box>
       </Modal>
 

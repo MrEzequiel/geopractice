@@ -206,16 +206,16 @@ const countries: readonly CountryType[] = [
   },
   {
     code: "KP",
-    label: "Korea, Democratic People's Republic of",
+    label: "North Korea",
     phone: "850"
   },
-  { code: "KR", label: "Korea, Republic of", phone: "82" },
+  { code: "KR", label: "South Korea", phone: "82" },
   { code: "KW", label: "Kuwait", phone: "965" },
   { code: "KY", label: "Cayman Islands", phone: "1-345" },
   { code: "KZ", label: "Kazakhstan", phone: "7" },
   {
     code: "LA",
-    label: "Lao People's Democratic Republic",
+    label: "Laos",
     phone: "856"
   },
   { code: "LB", label: "Lebanon", phone: "961" },

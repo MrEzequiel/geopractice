@@ -13,7 +13,8 @@ import {
   MenuItem,
   Select,
   Stack,
-  Typography
+  Typography,
+  useMediaQuery
 } from "@mui/material"
 
 import gameList from "../src/data/gameList"
@@ -51,6 +52,9 @@ interface GamePageProps {
 }
 
 const GamePage: NextPage<GamePageProps> = ({ gameInformation }) => {
+  const isTablet = useMediaQuery("(max-width:660px)")
+  const isMobile = useMediaQuery("(max-width:440px)")
+
   const [startedGame, setStartedGame] = useState(false)
   const [quantityRounds, setQuantityRounds] = useState(10)
 
@@ -68,7 +72,11 @@ const GamePage: NextPage<GamePageProps> = ({ gameInformation }) => {
         {!startedGame && (
           <Card>
             <CardContent>
-              <Stack direction="row" gap={4} alignItems="center">
+              <Stack
+                direction={isTablet ? "column" : "row"}
+                gap={isTablet ? 1 : 4}
+                alignItems="center"
+              >
                 <Box
                   flex={1}
                   borderRadius="50%"
@@ -76,7 +84,7 @@ const GamePage: NextPage<GamePageProps> = ({ gameInformation }) => {
                   boxShadow={2}
                   border={2}
                   borderColor="primary.main"
-                  sx={{ aspectRatio: "1/1" }}
+                  sx={{ aspectRatio: "1/1", width: isTablet ? 200 : undefined }}
                 >
                   <img
                     src={gameInformation.image}
@@ -97,14 +105,16 @@ const GamePage: NextPage<GamePageProps> = ({ gameInformation }) => {
                     {gameInformation.description}
                   </Typography>
 
-                  <Divider sx={{ my: 2 }} />
+                  <Divider sx={{ my: isTablet ? 3 : 2 }} />
 
                   <Stack
-                    direction="row"
+                    direction={isMobile ? "column" : "row"}
                     alignItems="center"
                     justifyContent="space-between"
+                    flexWrap="wrap"
+                    gap={1}
                   >
-                    <FormControl sx={{ minWidth: 250 }}>
+                    <FormControl sx={{ minWidth: 250 }} fullWidth={isMobile}>
                       <InputLabel>Quantidade de rodadas</InputLabel>
                       <Select
                         MenuProps={{
@@ -125,6 +135,7 @@ const GamePage: NextPage<GamePageProps> = ({ gameInformation }) => {
                       </Select>
                     </FormControl>
                     <Button
+                      fullWidth={isMobile}
                       variant="contained"
                       onClick={() => setStartedGame(true)}
                     >

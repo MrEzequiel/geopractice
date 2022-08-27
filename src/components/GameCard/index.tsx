@@ -2,14 +2,14 @@ import { FC, useState } from "react"
 import { useRouter } from "next/router"
 
 import {
-  Box,
   Card,
   CardContent,
   IconButton,
   Stack,
+  Tooltip,
   Typography
 } from "@mui/material"
-import { PlayArrow } from "@mui/icons-material"
+import { PlayArrow, Room } from "@mui/icons-material"
 import { green, grey } from "@mui/material/colors"
 
 import { GameInformation } from "../../interfaces/Game"
@@ -23,7 +23,7 @@ const GameCard: FC<GameCardProps> = ({ game }) => {
   const [readMore, setReadMore] = useState(false)
 
   return (
-    <Card>
+    <Card sx={{ height: "min-content" }}>
       <Stack
         justifyContent="end"
         height={140}
@@ -90,6 +90,17 @@ const GameCard: FC<GameCardProps> = ({ game }) => {
             </Typography>
           )}
         </Typography>
+
+        <Stack direction="row" gap={1} justifyContent="space-between" mt={2}>
+          <Tooltip title="Localizações" arrow placement="top">
+            <Stack alignItems="center">
+              <Room color="primary" />
+              <Typography color="text.secondary" variant="body1">
+                {game.data.length}
+              </Typography>
+            </Stack>
+          </Tooltip>
+        </Stack>
       </CardContent>
     </Card>
   )
