@@ -1,6 +1,7 @@
-import { FC, useMemo, useState } from "react"
-import { useRouter } from "next/router"
+import { FC, useMemo, useState } from "react";
+import { useRouter } from "next/router";
 
+import Image from "next/image";
 import {
   Box,
   Button,
@@ -10,34 +11,36 @@ import {
   Dialog,
   DialogContent,
   DialogTitle,
-  Divider,
   Stack,
-  Typography
-} from "@mui/material"
-import { Replay } from "@mui/icons-material"
-import { GameQuestion } from "../../interfaces/Game"
+  Typography,
+} from "@mui/material";
+import { Replay } from "@mui/icons-material";
+import { green, red } from "@mui/material/colors";
+
+import { GameQuestion } from "../../interfaces/Game";
+import RenderCountry from "../RenderCountry";
 
 interface GameFinishedProps {
-  gameQuestions: GameQuestion[]
-  quantityGames: number
-  onRestartGame: () => void
+  gameQuestions: GameQuestion[];
+  quantityGames: number;
+  onRestartGame: () => void;
 }
 
 const GameFinished: FC<GameFinishedProps> = ({
   gameQuestions,
   onRestartGame,
-  quantityGames
+  quantityGames,
 }) => {
-  const router = useRouter()
+  const router = useRouter();
   const correctQuestions = useMemo(() => {
     return gameQuestions.reduce(
       (acc, item) => (item.correct ? acc + 1 : acc),
       0
-    )
-  }, [gameQuestions])
+    );
+  }, [gameQuestions]);
 
-  const [showResult, setShowResult] = useState(false)
-  const isMajorityCertain = correctQuestions >= Math.ceil(quantityGames / 2)
+  const [showResult, setShowResult] = useState(false);
+  const isMajorityCertain = correctQuestions >= Math.ceil(quantityGames / 2);
 
   return (
     <>
@@ -99,53 +102,32 @@ const GameFinished: FC<GameFinishedProps> = ({
                 key={index}
                 bgcolor="background.paper"
                 border={1}
-                borderColor={
-                  gameQuestion.correct ? "success.main" : "error.main"
-                }
+                height="min-content"
+                borderColor={gameQuestion.correct ? green[800] : red[900]}
               >
-                <Stack
-                  direction="row"
-                  justifyContent="center"
-                  alignItems="center"
-                  gap={1}
-                  p={1}
-                >
-                  <Typography>Era: </Typography>
-                  <img
-                    height={20}
-                    loading="lazy"
-                    src={`https://flagcdn.com/w40/${gameQuestion.city.code.toLowerCase()}.png`}
-                  />{" "}
-                  {gameQuestion.city.label}
-                </Stack>
+                <RenderCountry label="Era: " city={gameQuestion.city} p={1} />
 
-                <Stack border={1} borderColor="divider">
-                  <img
+                <Stack
+                  border={1}
+                  borderColor="divider"
+                  position="relative"
+                  height={300}
+                >
+                  <Image
                     src={gameQuestion.image}
-                    style={{
-                      width: "100%",
-                      height: "100%",
-                      objectFit: "contain"
-                    }}
+                    quality={20}
+                    alt="imagem da questão"
+                    layout="fill"
+                    objectFit="contain"
                   />
                 </Stack>
 
                 {!gameQuestion.correct && gameQuestion.cityResponse && (
-                  <Stack
-                    direction="row"
-                    justifyContent="center"
-                    alignItems="center"
-                    gap={1}
+                  <RenderCountry
                     p={1}
-                  >
-                    <Typography>Você marcou: </Typography>
-                    <img
-                      height={20}
-                      loading="lazy"
-                      src={`https://flagcdn.com/w40/${gameQuestion.cityResponse.code.toLowerCase()}.png`}
-                    />{" "}
-                    {gameQuestion.cityResponse.label}
-                  </Stack>
+                    label="Você marcou: "
+                    city={gameQuestion.cityResponse}
+                  />
                 )}
               </Box>
             ))}
@@ -153,7 +135,7 @@ const GameFinished: FC<GameFinishedProps> = ({
         </DialogContent>
       </Dialog>
     </>
-  )
-}
+  );
+};
 
-export default GameFinished
+export default GameFinished;

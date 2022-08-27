@@ -1,6 +1,6 @@
-import { GameInformation } from "../interfaces/Game"
-import cars from "./car"
-import poles from "./pole"
+import { GameInformation } from "../interfaces/Game";
+import cars from "./car";
+import poles from "./pole";
 
 const gameList: GameInformation[] = [
   {
@@ -10,7 +10,7 @@ const gameList: GameInformation[] = [
       "https://tbzaiuuumjycdssbuhdy.supabase.co/storage/v1/object/public/images/google-car.jpg",
     name: "Google Car",
     slug: "car",
-    data: cars
+    data: cars,
   },
   {
     name: "Postes",
@@ -19,8 +19,8 @@ const gameList: GameInformation[] = [
     slug: "pole",
     data: poles,
     image:
-      "https://tbzaiuuumjycdssbuhdy.supabase.co/storage/v1/object/public/images/poles.jpg"
-  }
-]
+      "https://tbzaiuuumjycdssbuhdy.supabase.co/storage/v1/object/public/images/poles.jpg",
+  },
+];
 
-export default gameList
+export default gameList;

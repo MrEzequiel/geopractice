@@ -1,91 +1,91 @@
-import { FC, useMemo, useState } from "react"
+import { FC, useMemo, useState } from "react";
 
-import { Box, Typography } from "@mui/material"
+import { Box, Typography } from "@mui/material";
 
-import { CountryType } from "../../data/countries"
-import QuestionCard from "../QuestionCard"
-import GameFinished from "../GameFinished"
-import { GameData, GameQuestion } from "../../interfaces/Game"
+import { CountryType } from "../../data/countries";
+import QuestionCard from "../QuestionCard";
+import GameFinished from "../GameFinished";
+import { GameData, GameQuestion } from "../../interfaces/Game";
 
 const getRandomGamesQuestions = (
   dataGame: GameData[],
   quantity = 10
 ): GameQuestion[] => {
-  const quantityQuestions = dataGame.length
-  const randomQuestionsIndexs: number[] = []
+  const quantityQuestions = dataGame.length;
+  const randomQuestionsIndexs: number[] = [];
 
-  const getNumberRandom = () => Math.floor(Math.random() * quantityQuestions)
+  const getNumberRandom = () => Math.floor(Math.random() * quantityQuestions);
 
   while (randomQuestionsIndexs.length !== quantity) {
-    let random = getNumberRandom()
+    let random = getNumberRandom();
 
-    while (randomQuestionsIndexs.some(index => index === random)) {
-      random = getNumberRandom()
+    while (randomQuestionsIndexs.some((index) => index === random)) {
+      random = getNumberRandom();
     }
 
-    randomQuestionsIndexs.push(random)
+    randomQuestionsIndexs.push(random);
   }
 
-  return randomQuestionsIndexs.map(index => ({
+  return randomQuestionsIndexs.map((index) => ({
     ...dataGame[index],
     correct: false,
     revealed: false,
-    cityResponse: null
-  }))
-}
+    cityResponse: null,
+  }));
+};
 
 interface CarGameProps {
-  quantity: number
-  dataGame: GameData[]
-  title: string
+  quantity: number;
+  dataGame: GameData[];
+  title: string;
 }
 
 const GameEngine: FC<CarGameProps> = ({ quantity, dataGame, title }) => {
   const [gameQuestions, setGameQuestions] = useState(() =>
     getRandomGamesQuestions(dataGame, quantity)
-  )
-  const [finishedGame, setFinishedGame] = useState(false)
+  );
+  const [finishedGame, setFinishedGame] = useState(false);
 
-  const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0)
+  const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
   const currentQuestion = useMemo(
     () => gameQuestions[currentQuestionIndex],
     [currentQuestionIndex, gameQuestions]
-  )
+  );
 
   const onSubmitQuestion = (city: CountryType) => {
-    const correct = currentQuestion.city.code === city.code
+    const correct = currentQuestion.city.code === city.code;
 
-    setGameQuestions(prevGameQuestions =>
+    setGameQuestions((prevGameQuestions) =>
       prevGameQuestions.map((gameQuestion, index) => {
         if (index === currentQuestionIndex) {
           return {
             ...gameQuestion,
             cityResponse: city,
             revealed: true,
-            correct
-          }
+            correct,
+          };
         }
-        return gameQuestion
+        return gameQuestion;
       })
-    )
-  }
+    );
+  };
 
   const nextQuestion = () => {
-    const nextQuestion = gameQuestions[currentQuestionIndex + 1]
+    const nextQuestion = gameQuestions[currentQuestionIndex + 1];
 
     if (!nextQuestion) {
-      setFinishedGame(true)
-      return
+      setFinishedGame(true);
+      return;
     }
 
-    setCurrentQuestionIndex(prev => prev + 1)
-  }
+    setCurrentQuestionIndex((prev) => prev + 1);
+  };
 
   const restartGame = () => {
-    setCurrentQuestionIndex(0)
-    setGameQuestions(getRandomGamesQuestions(dataGame, quantity))
-    setFinishedGame(false)
-  }
+    setCurrentQuestionIndex(0);
+    setGameQuestions(getRandomGamesQuestions(dataGame, quantity));
+    setFinishedGame(false);
+  };
 
   return (
     <Box>
@@ -111,7 +111,7 @@ const GameEngine: FC<CarGameProps> = ({ quantity, dataGame, title }) => {
         />
       )}
     </Box>
-  )
-}
+  );
+};
 
-export default GameEngine
+export default GameEngine;

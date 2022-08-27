@@ -1,5 +1,5 @@
-import { useState } from "react"
-import { GetStaticPaths, GetStaticProps, NextPage } from "next"
+import { useState } from "react";
+import { GetStaticPaths, GetStaticProps, NextPage } from "next";
 
 import {
   Box,
@@ -14,53 +14,54 @@ import {
   Select,
   Stack,
   Typography,
-  useMediaQuery
-} from "@mui/material"
+  useMediaQuery,
+} from "@mui/material";
 
-import gameList from "../src/data/gameList"
+import gameList from "../src/data/gameList";
 
-import GameEngine from "../src/components/GameEngine"
-import { GameInformation } from "../src/interfaces/Game"
-import Head from "next/head"
+import GameEngine from "../src/components/GameEngine";
+import { GameInformation } from "../src/interfaces/Game";
+import Head from "next/head";
+import Image from "next/image";
 
 export const getStaticPaths: GetStaticPaths = async () => {
-  const paths = gameList.map(game => ({
-    params: { slug: game.slug }
-  }))
+  const paths = gameList.map((game) => ({
+    params: { slug: game.slug },
+  }));
 
   return {
     paths,
-    fallback: false
-  }
-}
+    fallback: false,
+  };
+};
 
-export const getStaticProps: GetStaticProps = async ctx => {
-  const slug = ctx.params?.slug as string
+export const getStaticProps: GetStaticProps = async (ctx) => {
+  const slug = ctx.params?.slug as string;
   const gameInformation = gameList.find(
-    game => game.slug === slug
-  ) as GameInformation
+    (game) => game.slug === slug
+  ) as GameInformation;
 
   return {
     props: {
-      gameInformation
-    }
-  }
-}
+      gameInformation,
+    },
+  };
+};
 
 interface GamePageProps {
-  gameInformation: GameInformation
+  gameInformation: GameInformation;
 }
 
 const GamePage: NextPage<GamePageProps> = ({ gameInformation }) => {
-  const isTablet = useMediaQuery("(max-width:660px)")
-  const isMobile = useMediaQuery("(max-width:440px)")
+  const isTablet = useMediaQuery("(max-width:660px)");
+  const isMobile = useMediaQuery("(max-width:440px)");
 
-  const [startedGame, setStartedGame] = useState(false)
-  const [quantityRounds, setQuantityRounds] = useState(10)
+  const [startedGame, setStartedGame] = useState(false);
+  const [quantityRounds, setQuantityRounds] = useState(10);
 
   const optionsRounds: number[] = Array(26)
     .fill(0)
-    .map((salve, index) => salve + (index + 5))
+    .map((salve, index) => salve + (index + 5));
 
   return (
     <>
@@ -85,14 +86,13 @@ const GamePage: NextPage<GamePageProps> = ({ gameInformation }) => {
                   border={2}
                   borderColor="primary.main"
                   sx={{ aspectRatio: "1/1", width: isTablet ? 200 : undefined }}
+                  position="relative"
                 >
-                  <img
+                  <Image
                     src={gameInformation.image}
-                    style={{
-                      width: "100%",
-                      height: "100%",
-                      objectFit: "cover"
-                    }}
+                    alt={`representação do jogo ${gameInformation.name}`}
+                    layout="fill"
+                    objectFit="cover"
                   />
                 </Box>
 
@@ -114,20 +114,29 @@ const GamePage: NextPage<GamePageProps> = ({ gameInformation }) => {
                     flexWrap="wrap"
                     gap={1}
                   >
-                    <FormControl sx={{ minWidth: 250 }} fullWidth={isMobile}>
-                      <InputLabel>Quantidade de rodadas</InputLabel>
+                    <FormControl
+                      sx={{ minWidth: 250 }}
+                      fullWidth={isMobile}
+                      size="small"
+                    >
+                      <InputLabel id="number-of-rounds-label">
+                        Quantidade de rodadas
+                      </InputLabel>
                       <Select
+                        label="Quantidade de rodadas"
+                        labelId="number-of-rounds-label"
+                        id="number-of-rounds-label"
                         MenuProps={{
                           sx: {
-                            maxHeight: "50vh"
-                          }
+                            maxHeight: "50vh",
+                          },
                         }}
                         value={quantityRounds}
-                        onChange={e =>
+                        onChange={(e) =>
                           setQuantityRounds(Number(e.target.value))
                         }
                       >
-                        {optionsRounds.map(round => (
+                        {optionsRounds.map((round) => (
                           <MenuItem value={round} key={round}>
                             {round}
                           </MenuItem>
@@ -157,7 +166,7 @@ const GamePage: NextPage<GamePageProps> = ({ gameInformation }) => {
         )}
       </Container>
     </>
-  )
-}
+  );
+};
 
-export default GamePage
+export default GamePage;

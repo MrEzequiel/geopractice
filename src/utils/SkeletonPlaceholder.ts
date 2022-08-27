@@ -10,15 +10,15 @@ const shimmer = (width?: string | number, height?: string | number) => `
   <rect width="${width}" height="${height}" fill="#333" />
   <rect id="r" width="${width}" height="${height}" fill="url(#g)" />
   <animate xlink:href="#r" attributeName="x" from="-${width}" to="${width}" dur="1s" repeatCount="indefinite"  />
-</svg>`
+</svg>`;
 
 const SkeletonPlaceholder = (width = "30", height = "30") => {
   const toBase64 = (str: string) =>
     typeof window === "undefined"
       ? Buffer.from(str).toString("base64")
-      : window.btoa(str)
+      : window.btoa(str);
 
-  return `data:image/svg+xml;base64,${toBase64(shimmer(width, height))}`
-}
+  return `data:image/svg+xml;base64,${toBase64(shimmer(width, height))}`;
+};
 
-export default SkeletonPlaceholder
+export default SkeletonPlaceholder;

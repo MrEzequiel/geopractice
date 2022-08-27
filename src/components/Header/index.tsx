@@ -1,6 +1,6 @@
-import { AppBar, Container, Toolbar, Typography } from "@mui/material"
-import Link from "next/link"
-import { FC } from "react"
+import { AppBar, Container, Toolbar, Typography } from "@mui/material";
+import Link from "next/link";
+import { FC } from "react";
 
 const Header: FC = () => {
   return (
@@ -17,7 +17,7 @@ const Header: FC = () => {
                 fontFamily: "monospace",
                 fontWeight: 700,
                 color: "inherit",
-                textDecoration: "none"
+                textDecoration: "none",
               }}
             >
               GeoPractice
@@ -26,7 +26,7 @@ const Header: FC = () => {
         </Toolbar>
       </Container>
     </AppBar>
-  )
-}
+  );
+};
 
-export default Header
+export default Header;

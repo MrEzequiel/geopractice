@@ -1,5 +1,6 @@
-import { FC, FormEvent, useEffect, useRef, useState } from "react"
-import { GpsFixed } from "@mui/icons-material"
+import { FC, FormEvent, useEffect, useRef, useState } from "react";
+
+import { GpsFixed } from "@mui/icons-material";
 import {
   Autocomplete,
   Box,
@@ -15,13 +16,16 @@ import {
   Stack,
   TextField,
   Typography,
-  Zoom
-} from "@mui/material"
-import Image from "next/image"
-import countries, { CountryType } from "../../data/countries"
-import { GameQuestion } from "../../interfaces/Game"
+  Zoom,
+} from "@mui/material";
+import Image from "next/image";
 
-const style = {
+import countries, { CountryType } from "../../data/countries";
+import { GameQuestion } from "../../interfaces/Game";
+import CountryFlag from "../CountryFlag";
+import { green, red } from "@mui/material/colors";
+
+const modalZoomImageStyles = {
   position: "absolute" as "absolute",
   top: "50%",
   left: "50%",
@@ -33,16 +37,16 @@ const style = {
   img: {
     width: "100%",
     height: "100%",
-    objectFit: "contain"
-  }
-}
+    objectFit: "contain",
+  },
+};
 
 interface QuestionCardProps {
-  gameQuestion: GameQuestion
-  currentQuestionIndex: number
-  quantity: number
-  onSubmit: (city: CountryType) => void
-  onNextQuestion: () => void
+  gameQuestion: GameQuestion;
+  currentQuestionIndex: number;
+  quantity: number;
+  onSubmit: (city: CountryType) => void;
+  onNextQuestion: () => void;
 }
 
 const QuestionCard: FC<QuestionCardProps> = ({
@@ -50,52 +54,62 @@ const QuestionCard: FC<QuestionCardProps> = ({
   currentQuestionIndex,
   quantity,
   onSubmit,
-  onNextQuestion
+  onNextQuestion,
 }) => {
-  const [zoomImage, setZoomImage] = useState(false)
-  const [loadingImage, setLoadingImage] = useState(false)
+  const [zoomImage, setZoomImage] = useState(false);
+  const [loadingImage, setLoadingImage] = useState(false);
 
-  const inputRef = useRef<HTMLInputElement>()
+  const inputRef = useRef<HTMLInputElement>();
   const [selectedCity, setSelectedCity] = useState<CountryType | null>(
     gameQuestion.cityResponse
-  )
-  const [inputValue, setInputValue] = useState("")
+  );
+  const [inputValue, setInputValue] = useState("");
 
   const clearAutoComplete = () => {
-    setInputValue("")
-    setSelectedCity(null)
-  }
+    setInputValue("");
+    setSelectedCity(null);
+  };
 
   useEffect(() => {
-    if (!inputRef.current || gameQuestion.revealed) return
-    inputRef.current?.focus()
-  }, [gameQuestion])
+    if (!inputRef.current || gameQuestion.revealed) return;
+    inputRef.current?.focus();
+  }, [gameQuestion]);
 
   const handleSubmit = () => {
-    if (!selectedCity) return
-    onSubmit(selectedCity)
-  }
+    if (!selectedCity) return;
+    onSubmit(selectedCity);
+  };
 
   useEffect(() => {
-    if (!gameQuestion.revealed) return
+    if (!gameQuestion.revealed) return;
 
     const handleKeyPress = (e: KeyboardEvent) => {
-      if (e.code === "Space") {
-        e.preventDefault()
-        clearAutoComplete()
-        onNextQuestion()
+      if (e.code === "Space" || e.code === "Enter") {
+        e.preventDefault();
+        clearAutoComplete();
+        onNextQuestion();
       }
-    }
+    };
 
-    window.addEventListener("keypress", handleKeyPress)
+    window.addEventListener("keypress", handleKeyPress);
 
     return () => {
-      window.removeEventListener("keypress", handleKeyPress)
-    }
-  }, [gameQuestion])
+      window.removeEventListener("keypress", handleKeyPress);
+    };
+  }, [gameQuestion, onNextQuestion]);
 
   return (
-    <Card sx={{ position: "relative", mb: 2 }}>
+    <Card
+      sx={{
+        position: "relative",
+        mb: 2,
+        boxShadow: gameQuestion.revealed
+          ? `0px 0px 100px -60px ${
+              gameQuestion.correct ? green[900] : red[900]
+            }`
+          : undefined,
+      }}
+    >
       <Box
         zIndex={8}
         position="absolute"
@@ -118,14 +132,15 @@ const QuestionCard: FC<QuestionCardProps> = ({
           layout="fill"
           objectFit="contain"
           quality={90}
+          alt="imagem da pergunta"
           placeholder="empty"
           style={{ cursor: "zoom-in" }}
           onClick={() => setZoomImage(true)}
           onLoad={() => {
-            setLoadingImage(true)
+            setLoadingImage(true);
           }}
           onLoadingComplete={() => {
-            setLoadingImage(false)
+            setLoadingImage(false);
           }}
         />
 
@@ -140,11 +155,19 @@ const QuestionCard: FC<QuestionCardProps> = ({
         keepMounted
         open={zoomImage}
         onClose={() => {
-          setZoomImage(false)
+          setZoomImage(false);
         }}
       >
-        <Box sx={style}>
-          <img src={gameQuestion.image} />{" "}
+        <Box sx={modalZoomImageStyles} onClick={() => setZoomImage(false)}>
+          <Image
+            src={gameQuestion.image}
+            layout="fill"
+            objectFit="contain"
+            quality={90}
+            alt="imagem da pergunta"
+            placeholder="empty"
+            style={{ cursor: "zoom-out" }}
+          />
         </Box>
       </Modal>
 
@@ -159,21 +182,25 @@ const QuestionCard: FC<QuestionCardProps> = ({
               >
                 {gameQuestion.correct ? "Você acertou" : "Você errou"}
               </Typography>
+
               <Divider orientation="vertical" flexItem />
-              <img
-                width={40}
-                height={30}
-                loading="lazy"
-                src={`https://flagcdn.com/w40/${gameQuestion.city.code.toLowerCase()}.png`}
-              />{" "}
-              {gameQuestion.city.label}
+
+              <>
+                <CountryFlag
+                  code={gameQuestion.city.code}
+                  size="1x"
+                  flagQuality="w160"
+                />{" "}
+                {gameQuestion.city.label}
+              </>
+
               <Link
                 href={gameQuestion.localization}
                 target="_blank"
                 sx={{ ml: 1 }}
               >
-                <IconButton>
-                  <GpsFixed />
+                <IconButton size="small">
+                  <GpsFixed fontSize="small" />
                 </IconButton>
               </Link>
             </Stack>
@@ -196,8 +223,8 @@ const QuestionCard: FC<QuestionCardProps> = ({
               fullWidth
               sx={{ mt: 2 }}
               onClick={() => {
-                clearAutoComplete()
-                onNextQuestion()
+                clearAutoComplete();
+                onNextQuestion();
               }}
             >
               Próxima
@@ -210,8 +237,8 @@ const QuestionCard: FC<QuestionCardProps> = ({
           gap={1}
           component="form"
           onSubmit={(e: FormEvent<HTMLFormElement>) => {
-            e.preventDefault()
-            handleSubmit()
+            e.preventDefault();
+            handleSubmit();
           }}
         >
           <Autocomplete
@@ -226,26 +253,21 @@ const QuestionCard: FC<QuestionCardProps> = ({
             }
             inputValue={inputValue}
             onInputChange={(event, newInputValue) => {
-              setInputValue(newInputValue)
+              setInputValue(newInputValue);
             }}
-            getOptionLabel={option => option.label}
+            getOptionLabel={(option) => option.label}
             renderOption={(props, option) => (
-              <Box
-                component="li"
-                sx={{ "& > img": { mr: 2, flexShrink: 0 } }}
-                {...props}
-              >
-                <img
-                  loading="lazy"
-                  width="20"
-                  src={`https://flagcdn.com/w20/${option.code.toLowerCase()}.png`}
-                  srcSet={`https://flagcdn.com/w40/${option.code.toLowerCase()}.png 2x`}
-                  alt=""
+              <Box component="li" {...props}>
+                <CountryFlag
+                  code={option.code}
+                  size="1x"
+                  flagQuality="w40"
+                  sx={{ mr: 2 }}
                 />
                 {option.label}
               </Box>
             )}
-            renderInput={params => (
+            renderInput={(params) => (
               <TextField
                 {...params}
                 inputRef={inputRef}
@@ -255,7 +277,7 @@ const QuestionCard: FC<QuestionCardProps> = ({
                 inputProps={{
                   ...params.inputProps,
                   autoCorrect: "false",
-                  autoComplete: "off" // disable autocomplete and autofill
+                  autoComplete: "off", // disable autocomplete and autofill
                 }}
               />
             )}
@@ -271,7 +293,7 @@ const QuestionCard: FC<QuestionCardProps> = ({
         </Stack>
       </CardContent>
     </Card>
-  )
-}
+  );
+};
 
-export default QuestionCard
+export default QuestionCard;

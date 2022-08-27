@@ -1,22 +1,22 @@
-import { CountryType } from "../data/countries"
+import { CountryType } from "../data/countries";
 
 export interface GameData {
-  city: CountryType
-  image: string
-  localization: string
-  hint?: string
+  city: CountryType;
+  image: string;
+  localization: string;
+  hint?: string;
 }
 
 export interface GameInformation {
-  name: string
-  description: string
-  slug: string
-  image: string
-  data: GameData[]
+  name: string;
+  description: string;
+  slug: string;
+  image: string;
+  data: GameData[];
 }
 
 export interface GameQuestion extends GameData {
-  cityResponse: CountryType | null
-  correct: boolean
-  revealed: boolean
+  cityResponse: CountryType | null;
+  correct: boolean;
+  revealed: boolean;
 }
