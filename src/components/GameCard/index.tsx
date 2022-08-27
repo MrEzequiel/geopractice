@@ -1,5 +1,5 @@
-import { FC, useState } from "react"
-import { useRouter } from "next/router"
+import { FC, useState } from "react";
+import { useRouter } from "next/router";
 
 import {
   Card,
@@ -7,20 +7,20 @@ import {
   IconButton,
   Stack,
   Tooltip,
-  Typography
-} from "@mui/material"
-import { PlayArrow, Room } from "@mui/icons-material"
-import { green, grey } from "@mui/material/colors"
+  Typography,
+} from "@mui/material";
+import { PlayArrow, Room } from "@mui/icons-material";
+import { green, grey } from "@mui/material/colors";
 
-import { GameInformation } from "../../interfaces/Game"
+import { GameInformation } from "../../interfaces/Game";
 
 interface GameCardProps {
-  game: GameInformation
+  game: GameInformation;
 }
 
 const GameCard: FC<GameCardProps> = ({ game }) => {
-  const router = useRouter()
-  const [readMore, setReadMore] = useState(false)
+  const router = useRouter();
+  const [readMore, setReadMore] = useState(false);
 
   return (
     <Card sx={{ height: "min-content" }}>
@@ -40,8 +40,8 @@ const GameCard: FC<GameCardProps> = ({ game }) => {
             left: 0,
             height: 140 / 2,
             width: "100%",
-            background: `linear-gradient(to top, ${grey[900]}, transparent)`
-          }
+            background: `linear-gradient(to top, ${grey[900]}, transparent)`,
+          },
         }}
       >
         <Stack
@@ -61,10 +61,10 @@ const GameCard: FC<GameCardProps> = ({ game }) => {
             sx={{
               background: green[500],
               "&:hover": {
-                background: green[600]
+                background: green[600],
               },
               width: 40,
-              height: 40
+              height: 40,
             }}
             onClick={() => router.push(`/${game.slug}`)}
           >
@@ -103,7 +103,7 @@ const GameCard: FC<GameCardProps> = ({ game }) => {
         </Stack>
       </CardContent>
     </Card>
-  )
-}
+  );
+};
 
-export default GameCard
+export default GameCard;

@@ -1,11 +1,11 @@
-import type { NextPage } from "next"
+import type { NextPage } from "next";
 
-import Container from "@mui/material/Container"
-import Typography from "@mui/material/Typography"
-import { Box } from "@mui/material"
+import Container from "@mui/material/Container";
+import Typography from "@mui/material/Typography";
+import { Box } from "@mui/material";
 
-import gameList from "../src/data/gameList"
-import GameCard from "../src/components/GameCard"
+import gameList from "../src/data/gameList";
+import GameCard from "../src/components/GameCard";
 
 const Home: NextPage = () => {
   return (
@@ -20,12 +20,12 @@ const Home: NextPage = () => {
         my={2}
         gridTemplateColumns="repeat(auto-fill, minmax(220px, 1fr))"
       >
-        {gameList.map(game => (
+        {gameList.map((game) => (
           <GameCard game={game} key={game.slug} />
         ))}
       </Box>
     </Container>
-  )
-}
+  );
+};
 
-export default Home
+export default Home;
