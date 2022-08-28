@@ -1,4 +1,6 @@
 import { FC } from "react";
+import { useTranslations } from "next-intl";
+
 import { Box, BoxProps } from "@mui/material";
 import Image, { ImageProps } from "next/image";
 
@@ -21,7 +23,7 @@ const widthSizes: { [x in Sizes]: number } = {
 };
 
 const heightSizes: { [x in Sizes]: number } = {
-  "1x": 13,
+  "1x": 18,
   "2x": 28,
   "3x": 56,
 };
@@ -46,6 +48,7 @@ const CountryFlag: FC<CountryFlag> = ({
   imageProps,
   ...props
 }) => {
+  const t = useTranslations("Games");
   flagQuality = flagQuality || sizeToFlagQuality[size];
 
   return (
@@ -58,7 +61,7 @@ const CountryFlag: FC<CountryFlag> = ({
     >
       <Image
         src={`https://flagcdn.com/${flagQuality}/${code.toLowerCase()}.png`}
-        alt="bandeira do país"
+        alt={t("flagDescription")}
         layout="fill"
         quality={100}
         {...imageProps}

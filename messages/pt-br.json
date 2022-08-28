@@ -1,0 +1,28 @@
+{
+  "Index": {
+    "title": "Jogos"
+  },
+  "Games": {
+    "more": "Ler mais",
+    "finishedGameTitle": "Jogo finalizado",
+    "seeResult": "Ver resultado",
+    "restart": "Reiniciar",
+    "back": "Voltar",
+    "yourResults": "Seus resultados",
+    "was": "Era: ",
+    "youScored": "Você marcou: ",
+    "questionImage": "imagem da questão",
+    "rightAnswer": "Você acertou",
+    "wrongAnswer": "Você errou",
+    "nextQuestion": "Próxima",
+    "selectCountry": "Selecione o país",
+    "answerQuestion": "Enviar",
+    "flagDescription": "Bandeira do país",
+    "localizationLabel": "Localizações"
+  },
+  "GamePage": {
+    "gameImage": "representação do jogo {gameName}",
+    "numberOfRoundsLabel": "Quantidade de rodadas",
+    "startQuestionnaire": "Começar"
+  }
+}

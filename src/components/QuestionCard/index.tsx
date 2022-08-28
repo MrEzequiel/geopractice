@@ -1,4 +1,5 @@
 import { FC, FormEvent, useEffect, useRef, useState } from "react";
+import { useTranslations } from "next-intl";
 
 import { GpsFixed } from "@mui/icons-material";
 import {
@@ -56,6 +57,8 @@ const QuestionCard: FC<QuestionCardProps> = ({
   onSubmit,
   onNextQuestion,
 }) => {
+  const t = useTranslations("Games");
+
   const [zoomImage, setZoomImage] = useState(false);
   const [loadingImage, setLoadingImage] = useState(false);
 
@@ -132,7 +135,7 @@ const QuestionCard: FC<QuestionCardProps> = ({
           layout="fill"
           objectFit="contain"
           quality={90}
-          alt="imagem da pergunta"
+          alt={t("questionImage")}
           placeholder="empty"
           style={{ cursor: "zoom-in" }}
           onClick={() => setZoomImage(true)}
@@ -164,7 +167,7 @@ const QuestionCard: FC<QuestionCardProps> = ({
             layout="fill"
             objectFit="contain"
             quality={90}
-            alt="imagem da pergunta"
+            alt={t("questionImage")}
             placeholder="empty"
             style={{ cursor: "zoom-out" }}
           />
@@ -180,7 +183,7 @@ const QuestionCard: FC<QuestionCardProps> = ({
               <Typography
                 color={gameQuestion.correct ? "success.main" : "error.main"}
               >
-                {gameQuestion.correct ? "Você acertou" : "Você errou"}
+                {gameQuestion.correct ? t("rightAnswer") : t("wrongAnswer")}
               </Typography>
 
               <Divider orientation="vertical" flexItem />
@@ -227,7 +230,7 @@ const QuestionCard: FC<QuestionCardProps> = ({
                 onNextQuestion();
               }}
             >
-              Próxima
+              {t("nextQuestion")}
             </Button>
           </Box>
         </Collapse>
@@ -271,7 +274,7 @@ const QuestionCard: FC<QuestionCardProps> = ({
               <TextField
                 {...params}
                 inputRef={inputRef}
-                label="Selecione o país"
+                label={t("selectCountry")}
                 fullWidth
                 autoFocus
                 inputProps={{
@@ -288,7 +291,7 @@ const QuestionCard: FC<QuestionCardProps> = ({
             type="submit"
             disabled={gameQuestion.revealed || !selectedCity}
           >
-            Enviar
+            {t("answerQuestion")}
           </Button>
         </Stack>
       </CardContent>

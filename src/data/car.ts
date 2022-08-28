@@ -1,3 +1,4 @@
+import { useTranslations } from "next-intl";
 import { GameData } from "../interfaces/Game";
 import getCountryByCode from "../utils/getCountryByCode";
 

@@ -1,5 +1,6 @@
 import { FC, useState } from "react";
 import { useRouter } from "next/router";
+import { useTranslations } from "next-intl";
 
 import {
   Card,
@@ -19,6 +20,7 @@ interface GameCardProps {
 }
 
 const GameCard: FC<GameCardProps> = ({ game }) => {
+  const t = useTranslations("Games");
   const router = useRouter();
   const [readMore, setReadMore] = useState(false);
 
@@ -86,13 +88,13 @@ const GameCard: FC<GameCardProps> = ({ game }) => {
               sx={{ cursor: "pointer" }}
               onClick={() => setReadMore(true)}
             >
-              Ler mais
+              {t("more")}
             </Typography>
           )}
         </Typography>
 
         <Stack direction="row" gap={1} justifyContent="space-between" mt={2}>
-          <Tooltip title="Localizações" arrow placement="top">
+          <Tooltip title={t("localizationLabel")} arrow placement="top">
             <Stack alignItems="center">
               <Room color="primary" />
               <Typography color="text.secondary" variant="body1">

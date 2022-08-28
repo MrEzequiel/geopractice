@@ -1,0 +1,28 @@
+{
+  "Index": {
+    "title": "Games"
+  },
+  "Games": {
+    "more": "Read more",
+    "finishedGameTitle": "Game finished",
+    "seeResult": "See result",
+    "restart": "Restart",
+    "back": "Go back",
+    "yourResults": "Your results",
+    "was": "Was: ",
+    "youScored": "You scored: ",
+    "questionImage": "question image",
+    "rightAnswer": "You're right",
+    "wrongAnswer": "You missed",
+    "nextQuestion": "Next",
+    "selectCountry": "Select country",
+    "answerQuestion": "Submit",
+    "flagDescription": "Country flag",
+    "localizationLabel": "Locations"
+  },
+  "GamePage": {
+    "gameImage": "game representation {gameName}",
+    "startQuestionnaire": "Start",
+    "numberOfRoundsLabel": "Number of rounds"
+  }
+}
