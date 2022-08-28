@@ -27,22 +27,6 @@ const Home: NextPage = () => {
           <GameCard game={game} key={game.slug} />
         ))}
       </Box>
-
-      {continents.map((continent) => (
-        <Box key={continent.slug} mb={2}>
-          <Typography>{continent.label}</Typography>
-          <Stack gap={1}>
-            {continent.countriesCode.map((code) => (
-              <RenderCountry
-                justifyContent="start"
-                key={code}
-                city={getCountryByCode(code)}
-                label=""
-              />
-            ))}
-          </Stack>
-        </Box>
-      ))}
     </Container>
   );
 };
