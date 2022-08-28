@@ -2,13 +2,10 @@ import type { NextPage } from "next";
 
 import Container from "@mui/material/Container";
 import Typography from "@mui/material/Typography";
-import { Box, Stack } from "@mui/material";
+import { Box } from "@mui/material";
 
 import gameList from "../src/data/gameList";
 import GameCard from "../src/components/GameCard";
-import continents from "../src/data/continents";
-import RenderCountry from "../src/components/RenderCountry";
-import getCountryByCode from "../src/utils/getCountryByCode";
 
 const Home: NextPage = () => {
   return (
