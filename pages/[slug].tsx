@@ -1,6 +1,10 @@
-import { useState } from "react";
-import { useTranslations } from "next-intl";
 import { GetStaticPaths, GetStaticProps, NextPage } from "next";
+import Head from "next/head";
+import Image from "next/image";
+
+import { useTranslations } from "next-intl";
+import useGameListData from "../src/hooks/data/useGameListData";
+import { useState } from "react";
 
 import {
   Box,
@@ -18,13 +22,10 @@ import {
   useMediaQuery,
 } from "@mui/material";
 
-import gameList from "../src/data/gameList";
-
 import GameEngine from "../src/components/GameEngine";
 import { GameInformation } from "../src/interfaces/Game";
-import Head from "next/head";
-import Image from "next/image";
 import withPathsLocales from "../src/utils/withPathsLocales";
+import gameList, { availableSlugs } from "../src/data/gameList";
 
 export const getStaticPaths: GetStaticPaths = async ({ locales }) => {
   const paths = gameList.map((game) => ({
@@ -39,24 +40,32 @@ export const getStaticPaths: GetStaticPaths = async ({ locales }) => {
 
 export const getStaticProps: GetStaticProps = async (ctx) => {
   const slug = ctx.params?.slug as string;
-  const gameInformation = gameList.find(
-    (game) => game.slug === slug
-  ) as GameInformation;
+
+  if (!availableSlugs.includes(slug)) {
+    return {
+      notFound: true,
+    };
+  }
 
   return {
     props: {
-      gameInformation,
+      slugGame: slug,
       messages: (await import(`../messages/${ctx.locale}`)).default,
     },
   };
 };
 
 interface GamePageProps {
-  gameInformation: GameInformation;
+  slugGame: string;
 }
 
-const GamePage: NextPage<GamePageProps> = ({ gameInformation }) => {
+const GamePage: NextPage<GamePageProps> = ({ slugGame }) => {
   const t = useTranslations("GamePage");
+
+  const gameList = useGameListData();
+  const gameInformation = gameList.find(
+    (game) => game.slug === slugGame
+  ) as GameInformation;
 
   const isTablet = useMediaQuery("(max-width:660px)");
   const isMobile = useMediaQuery("(max-width:440px)");

@@ -1,11 +1,11 @@
 import type { GetStaticProps, NextPage } from "next";
 import { useTranslations } from "next-intl";
+import useGameListData from "../src/hooks/data/useGameListData";
 
 import Container from "@mui/material/Container";
 import Typography from "@mui/material/Typography";
 import { Box } from "@mui/material";
 
-import gameList from "../src/data/gameList";
 import GameCard from "../src/components/GameCard";
 
 export const getStaticProps: GetStaticProps = async ({ locale }) => {
@@ -18,6 +18,7 @@ export const getStaticProps: GetStaticProps = async ({ locale }) => {
 
 const Home: NextPage = () => {
   const t = useTranslations("Index");
+  const gameList = useGameListData();
 
   return (
     <Container maxWidth="lg" sx={{ mt: 3 }}>

@@ -23,4 +23,6 @@ const gameList: GameInformation[] = [
   },
 ];
 
+export const availableSlugs = gameList.map((game) => game.slug);
+
 export default gameList;

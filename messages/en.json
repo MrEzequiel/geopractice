@@ -24,5 +24,30 @@
     "gameImage": "game representation {gameName}",
     "startQuestionnaire": "Start",
     "numberOfRoundsLabel": "Number of rounds"
+  },
+  "CarDataHints": {
+    "botswana": "You will see the back of the car, and its clearly a white vehicle. This is the same vehicle that did all of Southern Africa.",
+    "ghanaShaiHills": "This car coverage the reserve: 'Shai Hills Production Reserve' in Ghana.",
+    "ghanaTape": "Ghana is extremely easy to recognize because on the Google car which has bars on the roof, one of the four bars has a black duct tape.",
+    "kenyaSnorkey": "This is the snorkel car. It is very easy to distinguish from other cars.",
+    "nigeriaCar": "As suas características são retrovisores aparêntes e  quatro barras com a fita amarela e preta (as vezes só podem está presente nas barras de trás), mas há uma chance de não pegar um carro com barras.",
+    "ugandaCar": "This is the most common car of Uganda, and can only be found between Kampala and Entebbe.",
+    "ugandaCarNationalPark": "You can see the front of the car being white with a black bar, and varying amounts can be seen.",
+    "laosCar": "Laos has a visible roof rack on its google car everywhere except for in the capital Vientiane.",
+    "sriLankaCar": "Sri Lanka has a distuinguishable Google car, which has some red and blue colors on the back side, but this is not visible all the time.",
+    "ukraineCar": "Ukraine has the distinctive red car with a long antenna, sometimes not apparent.",
+    "USVirginIslandsCar": "This island is easily recognized by the white and red truck with bars. The White Truck can be found on the North Islands St. Thomas and St. John while the red truck and a white truck are found on St. Croix.",
+    "americanSamoaCar": "On this island you can see a truck with the front almost all blurred, and it's the back that matters.",
+    "argentinaCar": "The entire country is covered by black car, but it is also found in two South American countries, Peru and Uruguay.",
+    "kenyaChyuluHillsNationalParkCar": "This car is specific to the 'Chyulu Hills National Park' region in Kenya.",
+    "kenyaLewaWildlifeConservancyCar": "This car is specific to the 'Lewa Wildlife Conservancy' region in Kenya.",
+    "tauSamoaCar": "(Manu'a) The truck here is a dark grey. It can occasionally look black under the right lighting.",
+    "reunionCar": "Reunion's car looks a lot like Ghana's, but it has clear mirrors and its tape is on the bottom bar on the right."
+  },
+  "GameListCar": {
+    "goggleCarTitle": "Google Car",
+    "googleCarDescription": "In several google coverages it is possible to see a pattern of cars, knowing this you can instantly know in which region or country you are located. This game consists of you training your recognition.",
+    "poleTitle": "Poles",
+    "poleDescription": "This quiz includes different types of common poles from around the world. Train your skills to identify poles and make more accurate guesses."
   }
 }
