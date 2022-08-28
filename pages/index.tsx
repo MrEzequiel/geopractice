@@ -2,10 +2,13 @@ import type { NextPage } from "next";
 
 import Container from "@mui/material/Container";
 import Typography from "@mui/material/Typography";
-import { Box } from "@mui/material";
+import { Box, Stack } from "@mui/material";
 
 import gameList from "../src/data/gameList";
 import GameCard from "../src/components/GameCard";
+import continents from "../src/data/continents";
+import RenderCountry from "../src/components/RenderCountry";
+import getCountryByCode from "../src/utils/getCountryByCode";
 
 const Home: NextPage = () => {
   return (
@@ -24,6 +27,22 @@ const Home: NextPage = () => {
           <GameCard game={game} key={game.slug} />
         ))}
       </Box>
+
+      {continents.map((continent) => (
+        <Box key={continent.slug} mb={2}>
+          <Typography>{continent.label}</Typography>
+          <Stack gap={1}>
+            {continent.countriesCode.map((code) => (
+              <RenderCountry
+                justifyContent="start"
+                key={code}
+                city={getCountryByCode(code)}
+                label=""
+              />
+            ))}
+          </Stack>
+        </Box>
+      ))}
     </Container>
   );
 };

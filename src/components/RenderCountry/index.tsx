@@ -1,7 +1,6 @@
 import { FC } from "react";
-import { Box, Stack, StackProps, Typography } from "@mui/material";
+import { Stack, StackProps, Typography } from "@mui/material";
 import { CountryType } from "../../data/countries";
-import Image from "next/image";
 import CountryFlag from "../CountryFlag";
 
 interface RenderCountryProps extends StackProps {
