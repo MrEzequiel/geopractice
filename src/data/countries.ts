@@ -31,7 +31,6 @@ const countries: readonly CountryType[] = [
     phone: "61",
   },
   { code: "AW", label: "Aruba", phone: "297" },
-  { code: "AX", label: "Alland Islands", phone: "358" },
   { code: "AZ", label: "Azerbaijan", phone: "994" },
   {
     code: "BA",
@@ -53,7 +52,6 @@ const countries: readonly CountryType[] = [
   { code: "BR", label: "Brazil", phone: "55" },
   { code: "BS", label: "Bahamas", phone: "1-242" },
   { code: "BT", label: "Bhutan", phone: "975" },
-  { code: "BV", label: "Bouvet Island", phone: "47" },
   { code: "BW", label: "Botswana", phone: "267" },
   { code: "BY", label: "Belarus", phone: "375" },
   { code: "BZ", label: "Belize", phone: "501" },
@@ -159,11 +157,6 @@ const countries: readonly CountryType[] = [
   { code: "GW", label: "Guinea-Bissau", phone: "245" },
   { code: "GY", label: "Guyana", phone: "592" },
   { code: "HK", label: "Hong Kong", phone: "852" },
-  {
-    code: "HM",
-    label: "Heard Island and McDonald Islands",
-    phone: "672",
-  },
   { code: "HN", label: "Honduras", phone: "504" },
   { code: "HR", label: "Croatia", phone: "385" },
   { code: "HT", label: "Haiti", phone: "509" },
@@ -173,11 +166,6 @@ const countries: readonly CountryType[] = [
   { code: "IL", label: "Israel", phone: "972" },
   { code: "IM", label: "Isle of Man", phone: "44" },
   { code: "IN", label: "India", phone: "91" },
-  {
-    code: "IO",
-    label: "British Indian Ocean Territory",
-    phone: "246",
-  },
   { code: "IQ", label: "Iraq", phone: "964" },
   {
     code: "IR",
@@ -245,7 +233,7 @@ const countries: readonly CountryType[] = [
   { code: "MH", label: "Marshall Islands", phone: "692" },
   {
     code: "MK",
-    label: "Macedonia, the Former Yugoslav Republic of",
+    label: "North Macedonia",
     phone: "389",
   },
   { code: "ML", label: "Mali", phone: "223" },
@@ -294,11 +282,6 @@ const countries: readonly CountryType[] = [
   },
   { code: "PN", label: "Pitcairn", phone: "870" },
   { code: "PR", label: "Puerto Rico", phone: "1" },
-  {
-    code: "PS",
-    label: "Palestine, State of",
-    phone: "970",
-  },
   { code: "PT", label: "Portugal", phone: "351" },
   { code: "PW", label: "Palau", phone: "680" },
   { code: "PY", label: "Paraguay", phone: "595" },
@@ -316,11 +299,6 @@ const countries: readonly CountryType[] = [
   { code: "SG", label: "Singapore", phone: "65" },
   { code: "SH", label: "Saint Helena", phone: "290" },
   { code: "SI", label: "Slovenia", phone: "386" },
-  {
-    code: "SJ",
-    label: "Svalbard and Jan Mayen",
-    phone: "47",
-  },
   { code: "SK", label: "Slovakia", phone: "421" },
   { code: "SL", label: "Sierra Leone", phone: "232" },
   { code: "SM", label: "San Marino", phone: "378" },
@@ -351,15 +329,9 @@ const countries: readonly CountryType[] = [
     phone: "1-649",
   },
   { code: "TD", label: "Chad", phone: "235" },
-  {
-    code: "TF",
-    label: "French Southern Territories",
-    phone: "262",
-  },
   { code: "TG", label: "Togo", phone: "228" },
   { code: "TH", label: "Thailand", phone: "66" },
   { code: "TJ", label: "Tajikistan", phone: "992" },
-  { code: "TK", label: "Tokelau", phone: "690" },
   { code: "TL", label: "Timor-Leste", phone: "670" },
   { code: "TM", label: "Turkmenistan", phone: "993" },
   { code: "TN", label: "Tunisia", phone: "216" },
@@ -373,12 +345,12 @@ const countries: readonly CountryType[] = [
   { code: "TV", label: "Tuvalu", phone: "688" },
   {
     code: "TW",
-    label: "Taiwan, Province of China",
+    label: "Taiwan",
     phone: "886",
   },
   {
     code: "TZ",
-    label: "United Republic of Tanzania",
+    label: "Tanzania",
     phone: "255",
   },
   { code: "UA", label: "Ukraine", phone: "380" },
@@ -392,7 +364,7 @@ const countries: readonly CountryType[] = [
   { code: "UZ", label: "Uzbekistan", phone: "998" },
   {
     code: "VA",
-    label: "Holy See (Vatican City State)",
+    label: "Vatican City",
     phone: "379",
   },
   {

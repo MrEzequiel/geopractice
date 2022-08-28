@@ -15,13 +15,13 @@ type FlagQuality =
   | "w2560";
 
 const widthSizes: { [x in Sizes]: number } = {
-  "1x": 24,
+  "1x": 26,
   "2x": 40,
   "3x": 80,
 };
 
 const heightSizes: { [x in Sizes]: number } = {
-  "1x": 18,
+  "1x": 13,
   "2x": 28,
   "3x": 56,
 };

@@ -827,6 +827,12 @@ const poles: GameData[] = [
       "https://tbzaiuuumjycdssbuhdy.supabase.co/storage/v1/object/public/images/poles/pole_123.jpg",
     localization: "https://goo.gl/maps/Bkqgdm7T6y3Xxsmj9",
   },
+  {
+    city: getCountryByCode("CL"),
+    image:
+      "https://tbzaiuuumjycdssbuhdy.supabase.co/storage/v1/object/public/images/poles/pole_126.png",
+    localization: "https://goo.gl/maps/v2CX9GRgEp8JhHMX8",
+  },
 ];
 
 export default poles;
