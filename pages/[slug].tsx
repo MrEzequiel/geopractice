@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useTranslations } from "next-intl";
 import { GetStaticPaths, GetStaticProps, NextPage } from "next";
 
 import {
@@ -23,14 +24,15 @@ import GameEngine from "../src/components/GameEngine";
 import { GameInformation } from "../src/interfaces/Game";
 import Head from "next/head";
 import Image from "next/image";
+import withPathsLocales from "../src/utils/withPathsLocales";
 
-export const getStaticPaths: GetStaticPaths = async () => {
+export const getStaticPaths: GetStaticPaths = async ({ locales }) => {
   const paths = gameList.map((game) => ({
     params: { slug: game.slug },
   }));
 
   return {
-    paths,
+    paths: withPathsLocales(paths, locales || []),
     fallback: false,
   };
 };
@@ -44,6 +46,7 @@ export const getStaticProps: GetStaticProps = async (ctx) => {
   return {
     props: {
       gameInformation,
+      messages: (await import(`../messages/${ctx.locale}`)).default,
     },
   };
 };
@@ -53,6 +56,8 @@ interface GamePageProps {
 }
 
 const GamePage: NextPage<GamePageProps> = ({ gameInformation }) => {
+  const t = useTranslations("GamePage");
+
   const isTablet = useMediaQuery("(max-width:660px)");
   const isMobile = useMediaQuery("(max-width:440px)");
 
@@ -61,7 +66,7 @@ const GamePage: NextPage<GamePageProps> = ({ gameInformation }) => {
 
   const optionsRounds: number[] = Array(26)
     .fill(0)
-    .map((salve, index) => salve + (index + 5));
+    .map((currentRound, index) => currentRound + (index + 5));
 
   return (
     <>
@@ -90,7 +95,9 @@ const GamePage: NextPage<GamePageProps> = ({ gameInformation }) => {
                 >
                   <Image
                     src={gameInformation.image}
-                    alt={`representação do jogo ${gameInformation.name}`}
+                    alt={t("gameImage", {
+                      gameName: gameInformation.name,
+                    })}
                     layout="fill"
                     objectFit="cover"
                   />
@@ -120,10 +127,10 @@ const GamePage: NextPage<GamePageProps> = ({ gameInformation }) => {
                       size="small"
                     >
                       <InputLabel id="number-of-rounds-label">
-                        Quantidade de rodadas
+                        {t("numberOfRoundsLabel")}
                       </InputLabel>
                       <Select
-                        label="Quantidade de rodadas"
+                        label={t("numberOfRoundsLabel")}
                         labelId="number-of-rounds-label"
                         id="number-of-rounds-label"
                         MenuProps={{
@@ -148,7 +155,7 @@ const GamePage: NextPage<GamePageProps> = ({ gameInformation }) => {
                       variant="contained"
                       onClick={() => setStartedGame(true)}
                     >
-                      Começar
+                      {t("startQuestionnaire")}
                     </Button>
                   </Stack>
                 </Box>

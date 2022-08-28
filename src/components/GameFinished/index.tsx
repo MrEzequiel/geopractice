@@ -1,4 +1,5 @@
 import { FC, useMemo, useState } from "react";
+import { useTranslations } from "next-intl";
 import { useRouter } from "next/router";
 
 import Image from "next/image";
@@ -31,6 +32,8 @@ const GameFinished: FC<GameFinishedProps> = ({
   onRestartGame,
   quantityGames,
 }) => {
+  const t = useTranslations("Games");
+
   const router = useRouter();
   const correctQuestions = useMemo(() => {
     return gameQuestions.reduce(
@@ -47,7 +50,7 @@ const GameFinished: FC<GameFinishedProps> = ({
       <Card sx={{ position: "relative", mb: 2 }}>
         <CardContent>
           <Typography variant="h5" textAlign="center">
-            Jogo finalizado
+            {t("finishedGameTitle")}
           </Typography>
 
           <Stack direction="row" alignItems="center" justifyContent="center">
@@ -65,7 +68,7 @@ const GameFinished: FC<GameFinishedProps> = ({
 
           <Stack alignItems="center" mt={2}>
             <Button variant="contained" onClick={() => setShowResult(true)}>
-              Ver resultados
+              {t("seeResult")}
             </Button>
           </Stack>
         </CardContent>
@@ -76,9 +79,9 @@ const GameFinished: FC<GameFinishedProps> = ({
             startIcon={<Replay />}
             onClick={onRestartGame}
           >
-            Reiniciar
+            {t("restart")}
           </Button>
-          <Button onClick={() => router.push("/")}>Voltar</Button>
+          <Button onClick={() => router.push("/")}>{t("back")}</Button>
         </CardActions>
       </Card>
 
@@ -89,7 +92,7 @@ const GameFinished: FC<GameFinishedProps> = ({
         fullWidth
         scroll="body"
       >
-        <DialogTitle>Seus resultados</DialogTitle>
+        <DialogTitle>{t("yourResults")}</DialogTitle>
 
         <DialogContent dividers>
           <Box
@@ -105,7 +108,11 @@ const GameFinished: FC<GameFinishedProps> = ({
                 height="min-content"
                 borderColor={gameQuestion.correct ? green[800] : red[900]}
               >
-                <RenderCountry label="Era: " city={gameQuestion.city} p={1} />
+                <RenderCountry
+                  label={t("was")}
+                  city={gameQuestion.city}
+                  p={1}
+                />
 
                 <Stack
                   border={1}
@@ -116,7 +123,7 @@ const GameFinished: FC<GameFinishedProps> = ({
                   <Image
                     src={gameQuestion.image}
                     quality={20}
-                    alt="imagem da questão"
+                    alt={t("questionImage")}
                     layout="fill"
                     objectFit="contain"
                   />
@@ -125,7 +132,7 @@ const GameFinished: FC<GameFinishedProps> = ({
                 {!gameQuestion.correct && gameQuestion.cityResponse && (
                   <RenderCountry
                     p={1}
-                    label="Você marcou: "
+                    label={t("youScored")}
                     city={gameQuestion.cityResponse}
                   />
                 )}
