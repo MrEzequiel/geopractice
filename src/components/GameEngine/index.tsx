@@ -1,4 +1,4 @@
-import { FC, useMemo, useState } from "react";
+import { FC, useCallback, useEffect, useMemo, useState } from "react";
 
 import { Box, Typography } from "@mui/material";
 
@@ -6,6 +6,7 @@ import { CountryType } from "../../data/countries";
 import QuestionCard from "../QuestionCard";
 import GameFinished from "../GameFinished";
 import { GameData, GameQuestion } from "../../interfaces/Game";
+import { useRouter } from "next/router";
 
 const getRandomGamesQuestions = (
   dataGame: GameData[],
@@ -86,6 +87,19 @@ const GameEngine: FC<CarGameProps> = ({ quantity, dataGame, title }) => {
     setGameQuestions(getRandomGamesQuestions(dataGame, quantity));
     setFinishedGame(false);
   };
+
+  const handleChangeDataGame = useCallback(() => {
+    setGameQuestions((prevGameQuestions) => {
+      return prevGameQuestions.map((gameQuestion) => ({
+        ...gameQuestion,
+        hint: dataGame.find(
+          (data) => data.localization === gameQuestion.localization
+        )!.hint,
+      }));
+    });
+  }, [dataGame]);
+
+  useEffect(handleChangeDataGame, [dataGame, handleChangeDataGame]);
 
   return (
     <Box>
