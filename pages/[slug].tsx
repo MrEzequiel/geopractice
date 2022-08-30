@@ -3,7 +3,9 @@ import Head from "next/head";
 import Image from "next/image";
 
 import { useTranslations } from "next-intl";
-import useGameListData from "../src/hooks/data/useGameListData";
+import useGameListData, {
+  availableSlugs,
+} from "../src/hooks/data/useGameListData";
 import { useState } from "react";
 
 import {
@@ -23,13 +25,12 @@ import {
 } from "@mui/material";
 
 import GameEngine from "../src/components/GameEngine";
-import { GameInformation } from "../src/interfaces/Game";
+import { GameInformation, GameListSlugs } from "../src/interfaces/Game";
 import withPathsLocales from "../src/utils/withPathsLocales";
-import gameList, { availableSlugs } from "../src/data/gameList";
 
 export const getStaticPaths: GetStaticPaths = async ({ locales }) => {
-  const paths = gameList.map((game) => ({
-    params: { slug: game.slug },
+  const paths = availableSlugs.map((gameSlug) => ({
+    params: { slug: gameSlug },
   }));
 
   return {
@@ -39,7 +40,7 @@ export const getStaticPaths: GetStaticPaths = async ({ locales }) => {
 };
 
 export const getStaticProps: GetStaticProps = async (ctx) => {
-  const slug = ctx.params?.slug as string;
+  const slug = ctx.params?.slug as GameListSlugs;
 
   if (!availableSlugs.includes(slug)) {
     return {

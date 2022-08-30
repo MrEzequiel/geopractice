@@ -143,8 +143,7 @@ const useCarsData = (): GameData[] => {
       city: getCountryByCode("BM"),
       image:
         "https://tbzaiuuumjycdssbuhdy.supabase.co/storage/v1/object/public/images/car18.jpg",
-      localization:
-        "https://maps.google.com/maps?q=&layer=c&cbll=49.046311,28.7152758",
+      localization: "https://goo.gl/maps/xhaLyCpqXc9VYoCr7",
     },
     {
       city: getCountryByCode("CW"),

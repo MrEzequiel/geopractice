@@ -6,7 +6,6 @@ import { CountryType } from "../../data/countries";
 import QuestionCard from "../QuestionCard";
 import GameFinished from "../GameFinished";
 import { GameData, GameQuestion } from "../../interfaces/Game";
-import { useRouter } from "next/router";
 
 const getRandomGamesQuestions = (
   dataGame: GameData[],

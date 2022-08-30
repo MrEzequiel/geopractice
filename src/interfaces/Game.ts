@@ -7,10 +7,12 @@ export interface GameData {
   hint?: string;
 }
 
+export type GameListSlugs = "car" | "pole";
+
 export interface GameInformation {
   name: string;
   description: string;
-  slug: string;
+  slug: GameListSlugs;
   image: string;
   data: GameData[];
 }

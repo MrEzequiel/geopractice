@@ -1,7 +1,9 @@
-import { GameInformation } from "../../interfaces/Game";
+import { GameInformation, GameListSlugs } from "../../interfaces/Game";
 import poles from "../../data/pole";
 import useCarsData from "./useCarsData";
 import { useTranslations } from "next-intl";
+
+export const availableSlugs: GameListSlugs[] = ["car", "pole"];
 
 const useGameListData = (): GameInformation[] => {
   const t = useTranslations("GameListCar");
