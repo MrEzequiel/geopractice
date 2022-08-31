@@ -1,4 +1,5 @@
 import { AppProps } from "next/app";
+import Script from "next/script";
 import Head from "next/head";
 
 import { ThemeProvider } from "@mui/material/styles";
@@ -24,6 +25,9 @@ Router.events.on("routeChangeStart", () => {
 Router.events.on("routeChangeComplete", () => NProgress.done());
 Router.events.on("routeChangeError", () => NProgress.done());
 
+const GOOGLE_ANALYTICS = process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS;
+const isProduction = process.env.NODE_ENV === "production";
+
 interface MyAppProps extends AppProps {
   emotionCache?: EmotionCache;
 }
@@ -32,23 +36,50 @@ export default function MyApp(props: MyAppProps) {
   const { Component, emotionCache = clientSideEmotionCache, pageProps } = props;
 
   return (
-    <CacheProvider value={emotionCache}>
-      <NextIntlProvider messages={pageProps.messages}>
-        <Head>
-          <meta name="viewport" content="initial-scale=1, width=device-width" />
-          <title>GeoPractice</title>
-        </Head>
+    <>
+      {GOOGLE_ANALYTICS && isProduction && (
+        <>
+          <Script
+            strategy="lazyOnload"
+            src={`https://www.googletagmanager.com/gtag/js?id=${GOOGLE_ANALYTICS}`}
+          />
 
-        <ThemeProvider theme={theme}>
-          {/* CssBaseline kickstart an elegant, consistent, and simple baseline to build upon. */}
-          <CssBaseline />
-          <NProgressStyles />
+          <Script
+            strategy="lazyOnload"
+            id="google-analytics"
+            dangerouslySetInnerHTML={{
+              __html: `window.dataLayer = window.dataLayer || [];
+              function gtag(){dataLayer.push(arguments);}
+              gtag('js', new Date());
+              gtag('config', '${GOOGLE_ANALYTICS}', {
+              page_path: window.location.pathname,
+              });`,
+            }}
+          />
+        </>
+      )}
 
-          <Header />
+      <CacheProvider value={emotionCache}>
+        <NextIntlProvider messages={pageProps.messages}>
+          <Head>
+            <meta
+              name="viewport"
+              content="initial-scale=1, width=device-width"
+            />
+            <title>GeoPractice</title>
+          </Head>
 
-          <Component {...pageProps} />
-        </ThemeProvider>
-      </NextIntlProvider>
-    </CacheProvider>
+          <ThemeProvider theme={theme}>
+            {/* CssBaseline kickstart an elegant, consistent, and simple baseline to build upon. */}
+            <CssBaseline />
+            <NProgressStyles />
+
+            <Header />
+
+            <Component {...pageProps} />
+          </ThemeProvider>
+        </NextIntlProvider>
+      </CacheProvider>
+    </>
   );
 }
