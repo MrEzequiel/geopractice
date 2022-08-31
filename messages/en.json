@@ -20,11 +20,22 @@
     "flagDescription": "Country flag",
     "localizationLabel": "Locations"
   },
+  "ContinentLabel": {
+    "america": "America",
+    "africa": "Africa",
+    "asia": "Asia",
+    "europe": "Europe",
+    "oceania": "Oceania"
+  },
   "GamePage": {
     "gameImage": "game representation {gameName}",
     "startQuestionnaire": "Start",
-    "numberOfRoundsLabel": "Number of rounds"
+    "numberOfRoundsLabel": "Number of rounds",
+    "selectContinent": "Select continent",
+    "gameSettings": "Settings",
+    "allContinent": "All"
   },
+
   "CarDataHints": {
     "botswana": "You will see the back of the car, and its clearly a white vehicle. This is the same vehicle that did all of Southern Africa.",
     "ghanaShaiHills": "This car coverage the reserve: 'Shai Hills Production Reserve' in Ghana.",

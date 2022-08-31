@@ -3,6 +3,8 @@ import { FC, useCallback, useEffect, useMemo, useState } from "react";
 import { Box, Typography } from "@mui/material";
 
 import { CountryType } from "../../data/countries";
+import { SlugContinents } from "../../data/continents";
+
 import QuestionCard from "../QuestionCard";
 import GameFinished from "../GameFinished";
 import { GameData, GameQuestion } from "../../interfaces/Game";
@@ -38,9 +40,16 @@ interface CarGameProps {
   quantity: number;
   dataGame: GameData[];
   title: string;
+  continentSlug: SlugContinents | "all";
 }
 
-const GameEngine: FC<CarGameProps> = ({ quantity, dataGame, title }) => {
+const GameEngine: FC<CarGameProps> = ({
+  quantity,
+  dataGame,
+  title,
+  continentSlug,
+}) => {
+  quantity = quantity >= dataGame.length ? dataGame.length : quantity;
   const [gameQuestions, setGameQuestions] = useState(() =>
     getRandomGamesQuestions(dataGame, quantity)
   );
@@ -113,6 +122,7 @@ const GameEngine: FC<CarGameProps> = ({ quantity, dataGame, title }) => {
           quantity={quantity}
           onSubmit={onSubmitQuestion}
           onNextQuestion={nextQuestion}
+          continentSlug={continentSlug}
         />
       )}
 

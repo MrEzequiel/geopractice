@@ -1,4 +1,17 @@
-const continents = [
+export type SlugContinents =
+  | "africa"
+  | "america"
+  | "asia"
+  | "europe"
+  | "oceania";
+
+export interface Continent {
+  label: string;
+  slug: SlugContinents;
+  countriesCode: string[];
+}
+
+const continents: Continent[] = [
   {
     label: "África",
     slug: "africa",

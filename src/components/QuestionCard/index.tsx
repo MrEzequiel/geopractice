@@ -19,12 +19,15 @@ import {
   Typography,
   Zoom,
 } from "@mui/material";
+import { green, red } from "@mui/material/colors";
 import Image from "next/image";
 
 import countries, { CountryType } from "../../data/countries";
-import { GameQuestion } from "../../interfaces/Game";
 import CountryFlag from "../CountryFlag";
-import { green, red } from "@mui/material/colors";
+import { filterCountriesByContinent } from "../../utils/filterGameByContinent";
+
+import { GameQuestion } from "../../interfaces/Game";
+import { SlugContinents } from "../../data/continents";
 
 const modalZoomImageStyles = {
   position: "absolute" as "absolute",
@@ -48,6 +51,7 @@ interface QuestionCardProps {
   quantity: number;
   onSubmit: (city: CountryType) => void;
   onNextQuestion: () => void;
+  continentSlug: SlugContinents | "all";
 }
 
 const QuestionCard: FC<QuestionCardProps> = ({
@@ -56,7 +60,9 @@ const QuestionCard: FC<QuestionCardProps> = ({
   quantity,
   onSubmit,
   onNextQuestion,
+  continentSlug,
 }) => {
+  const filterCountries = filterCountriesByContinent(continentSlug);
   const t = useTranslations("Games");
 
   const [zoomImage, setZoomImage] = useState(false);
@@ -246,7 +252,7 @@ const QuestionCard: FC<QuestionCardProps> = ({
         >
           <Autocomplete
             id="country-select-demo"
-            options={countries}
+            options={filterCountries}
             fullWidth
             autoHighlight
             disabled={gameQuestion.revealed}
