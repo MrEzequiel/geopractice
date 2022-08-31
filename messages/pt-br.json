@@ -20,10 +20,20 @@
     "flagDescription": "Bandeira do país",
     "localizationLabel": "Localizações"
   },
+  "ContinentLabel": {
+    "america": "América",
+    "africa": "África",
+    "asia": "Ásia",
+    "europe": "Europa",
+    "oceania": "Oceania"
+  },
   "GamePage": {
     "gameImage": "representação do jogo {gameName}",
+    "startQuestionnaire": "Começar",
     "numberOfRoundsLabel": "Quantidade de rodadas",
-    "startQuestionnaire": "Começar"
+    "selectContinent": "Selecionar continente",
+    "gameSettings": "Opções",
+    "allContinent": "Todos"
   },
   "CarDataHints": {
     "botswana": "Na região da África Meridional é comum ver a parte de trás do carro branca.",

@@ -2,11 +2,11 @@ import { GetStaticPaths, GetStaticProps, NextPage } from "next";
 import Head from "next/head";
 import Image from "next/image";
 
+import { useEffect, useMemo, useState } from "react";
 import { useTranslations } from "next-intl";
 import useGameListData, {
   availableSlugs,
 } from "../src/hooks/data/useGameListData";
-import { useState } from "react";
 
 import {
   Box,
@@ -27,6 +27,9 @@ import {
 import GameEngine from "../src/components/GameEngine";
 import { GameInformation, GameListSlugs } from "../src/interfaces/Game";
 import withPathsLocales from "../src/utils/withPathsLocales";
+import useContinents from "../src/hooks/data/useContinents";
+import filterGameByContinent from "../src/utils/filterGameByContinent";
+import { SlugContinents } from "../src/data/continents";
 
 export const getStaticPaths: GetStaticPaths = async ({ locales }) => {
   const paths = availableSlugs.map((gameSlug) => ({
@@ -63,10 +66,24 @@ interface GamePageProps {
 const GamePage: NextPage<GamePageProps> = ({ slugGame }) => {
   const t = useTranslations("GamePage");
 
+  const continents = useContinents();
+  const [filterContinent, setFilterContinent] = useState<
+    SlugContinents | "all"
+  >("all");
+  const selectContinent = useMemo(() => {
+    return continents.find((continent) => continent.slug === filterContinent);
+  }, [filterContinent, continents]);
+
   const gameList = useGameListData();
   const gameInformation = gameList.find(
     (game) => game.slug === slugGame
   ) as GameInformation;
+  const gameDataByContinent = !selectContinent
+    ? gameInformation.data
+    : filterGameByContinent(
+        gameInformation.data,
+        selectContinent.countriesCode
+      );
 
   const isTablet = useMediaQuery("(max-width:660px)");
   const isMobile = useMediaQuery("(max-width:440px)");
@@ -82,6 +99,7 @@ const GamePage: NextPage<GamePageProps> = ({ slugGame }) => {
     <>
       <Head>
         <title>{gameInformation.name} | GeoPractice</title>
+        <meta name="description" content={gameInformation.description} />
       </Head>
 
       <Container maxWidth="md" sx={{ mt: 3 }}>
@@ -122,7 +140,9 @@ const GamePage: NextPage<GamePageProps> = ({ slugGame }) => {
                     {gameInformation.description}
                   </Typography>
 
-                  <Divider sx={{ my: isTablet ? 3 : 2 }} />
+                  <Divider sx={{ my: isTablet ? 3 : 2 }}>
+                    {t("gameSettings")}
+                  </Divider>
 
                   <Stack
                     direction={isMobile ? "column" : "row"}
@@ -132,7 +152,7 @@ const GamePage: NextPage<GamePageProps> = ({ slugGame }) => {
                     gap={1}
                   >
                     <FormControl
-                      sx={{ minWidth: 250 }}
+                      sx={{ flex: 1 }}
                       fullWidth={isMobile}
                       size="small"
                     >
@@ -160,14 +180,46 @@ const GamePage: NextPage<GamePageProps> = ({ slugGame }) => {
                         ))}
                       </Select>
                     </FormControl>
-                    <Button
+
+                    <FormControl
+                      sx={{ flex: 1 }}
                       fullWidth={isMobile}
-                      variant="contained"
-                      onClick={() => setStartedGame(true)}
+                      size="small"
                     >
-                      {t("startQuestionnaire")}
-                    </Button>
+                      <InputLabel>{t("selectContinent")}</InputLabel>
+                      <Select
+                        value={filterContinent}
+                        onChange={(e) =>
+                          setFilterContinent(
+                            e.target.value as SlugContinents | "all"
+                          )
+                        }
+                        label={t("selectContinent")}
+                        MenuProps={{
+                          sx: {
+                            maxHeight: "50vh",
+                          },
+                        }}
+                      >
+                        <MenuItem value="all">{t("allContinent")}</MenuItem>
+
+                        {continents.map((continent) => (
+                          <MenuItem value={continent.slug} key={continent.slug}>
+                            {continent.label}
+                          </MenuItem>
+                        ))}
+                      </Select>
+                    </FormControl>
                   </Stack>
+
+                  <Button
+                    sx={{ mt: 1 }}
+                    fullWidth
+                    variant="contained"
+                    onClick={() => setStartedGame(true)}
+                  >
+                    {t("startQuestionnaire")}
+                  </Button>
                 </Box>
               </Stack>
             </CardContent>
@@ -177,8 +229,9 @@ const GamePage: NextPage<GamePageProps> = ({ slugGame }) => {
         {startedGame && (
           <GameEngine
             quantity={quantityRounds}
-            dataGame={gameInformation.data}
+            dataGame={gameDataByContinent}
             title={gameInformation.name}
+            continentSlug={filterContinent}
           />
         )}
       </Container>
