@@ -55,7 +55,7 @@ const GameCard: FC<GameCardProps> = ({ game }) => {
           justifyContent="space-between"
           bottom={-20}
         >
-          <Typography variant="h5" component="div">
+          <Typography variant="h5" fontWeight={600} component="div">
             {game.name}
           </Typography>
 

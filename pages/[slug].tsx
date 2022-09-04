@@ -102,7 +102,7 @@ const GamePage: NextPage<GamePageProps> = ({ slugGame }) => {
         <meta name="description" content={gameInformation.description} />
       </Head>
 
-      <Container maxWidth="md" sx={{ mt: 3 }}>
+      <Container maxWidth="md">
         {!startedGame && (
           <Card>
             <CardContent>

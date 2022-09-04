@@ -2,6 +2,10 @@
   "Index": {
     "title": "Games"
   },
+  "Footer": {
+    "description": "Application made by the Brazilian geoguessr community with the intention of training skills in different meta and promoting the study of different countries.",
+    "reference": "Reference"
+  },
   "Games": {
     "more": "Read more",
     "finishedGameTitle": "Game finished",

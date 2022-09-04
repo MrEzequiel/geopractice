@@ -2,6 +2,7 @@ import { AppProps } from "next/app";
 import Script from "next/script";
 import Head from "next/head";
 
+import { Box } from "@mui/material";
 import { ThemeProvider } from "@mui/material/styles";
 import CssBaseline from "@mui/material/CssBaseline";
 
@@ -10,6 +11,7 @@ import { CacheProvider, EmotionCache } from "@emotion/react";
 import theme from "../src/theme";
 import createEmotionCache from "../src/createEmotionCache";
 import Header from "../src/components/Header";
+import Footer from "../src/components/Footer";
 import { NextIntlProvider } from "next-intl";
 
 import { Router } from "next/router";
@@ -76,7 +78,11 @@ export default function MyApp(props: MyAppProps) {
 
             <Header />
 
-            <Component {...pageProps} />
+            <Box component="main" mt={3} mb={6} minHeight="80vh">
+              <Component {...pageProps} />
+            </Box>
+
+            <Footer />
           </ThemeProvider>
         </NextIntlProvider>
       </CacheProvider>
