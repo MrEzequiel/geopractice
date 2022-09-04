@@ -3,7 +3,7 @@ import { CountryType } from "../data/countries";
 export interface GameData {
   city: CountryType;
   image: string;
-  localization: string;
+  localization?: string;
   hint?: string;
 }
 
