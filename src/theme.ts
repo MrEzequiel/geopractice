@@ -13,6 +13,15 @@ const theme = createTheme({
     },
   },
 
+  transitions: {
+    easing: {
+      easeIn: "cubic-bezier(0.075, 0.82, 0.165, 1)",
+      easeInOut: "cubic-bezier(0.075, 0.82, 0.165, 1)",
+      easeOut: "cubic-bezier(0.075, 0.82, 0.165, 1)",
+      sharp: "cubic-bezier(0.075, 0.82, 0.165, 1)",
+    },
+  },
+
   palette: {
     mode: "dark",
     primary: {
