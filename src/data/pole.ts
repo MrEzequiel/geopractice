@@ -24,29 +24,10 @@ const poles: GameData[] = [
       "https://maps.google.com/maps?q=&layer=c&cbll=-26.4578801,31.0210743",
   },
   {
-    city: getCountryByCode("MG"),
+    city: getCountryByCode("SZ"),
     image:
-      "https://tbzaiuuumjycdssbuhdy.supabase.co/storage/v1/object/public/images/poles/pole_55.jpg",
-    localization:
-      "https://maps.google.com/maps?q=&layer=c&cbll=-23.354201,43.6704245",
-  },
-  {
-    city: getCountryByCode("ML"),
-    image:
-      "https://tbzaiuuumjycdssbuhdy.supabase.co/storage/v1/object/public/images/poles/pole_108.jpg",
-    localization: "https://goo.gl/maps/r2ikPmaTJcjtghV3A",
-  },
-  {
-    city: getCountryByCode("ML"),
-    image:
-      "https://tbzaiuuumjycdssbuhdy.supabase.co/storage/v1/object/public/images/poles/pole_109.jpg",
-    localization: "https://goo.gl/maps/FS9A4F3byCZLDM6p7",
-  },
-  {
-    city: getCountryByCode("ML"),
-    image:
-      "https://tbzaiuuumjycdssbuhdy.supabase.co/storage/v1/object/public/images/poles/pole_110.jpg",
-    localization: "https://goo.gl/maps/722JE4qj9gtckuc49",
+      "https://tbzaiuuumjycdssbuhdy.supabase.co/storage/v1/object/public/images/poles/pole_127.png",
+    localization: "https://goo.gl/maps/4DDJMwyEMUNbN9U3A",
   },
   {
     city: getCountryByCode("NG"),
@@ -197,13 +178,6 @@ const poles: GameData[] = [
   {
     city: getCountryByCode("EE"),
     image:
-      "https://tbzaiuuumjycdssbuhdy.supabase.co/storage/v1/object/public/images/poles/pole_68.jpg",
-    localization:
-      "https://maps.google.com/maps?q=&layer=c&cbll=58.5746268,24.8822528",
-  },
-  {
-    city: getCountryByCode("EE"),
-    image:
       "https://tbzaiuuumjycdssbuhdy.supabase.co/storage/v1/object/public/images/poles/pole_77.jpg",
     localization: "https://goo.gl/maps/Gv8yVkoB3GP4Vg4u8",
   },
@@ -228,20 +202,8 @@ const poles: GameData[] = [
   {
     city: getCountryByCode("EE"),
     image:
-      "https://tbzaiuuumjycdssbuhdy.supabase.co/storage/v1/object/public/images/poles/pole_81.jpg",
-    localization: "https://goo.gl/maps/SiyxW1LQQMiEYJGq6",
-  },
-  {
-    city: getCountryByCode("EE"),
-    image:
       "https://tbzaiuuumjycdssbuhdy.supabase.co/storage/v1/object/public/images/poles/pole_82.jpg",
     localization: "https://goo.gl/maps/u8UpP6yZXE7M61SS7",
-  },
-  {
-    city: getCountryByCode("EE"),
-    image:
-      "https://tbzaiuuumjycdssbuhdy.supabase.co/storage/v1/object/public/images/poles/pole_83.jpg",
-    localization: "https://goo.gl/maps/aeUZzcaP7For7kbS7",
   },
   {
     city: getCountryByCode("EE"),
@@ -260,18 +222,6 @@ const poles: GameData[] = [
     image:
       "https://tbzaiuuumjycdssbuhdy.supabase.co/storage/v1/object/public/images/poles/pole_87.jpg",
     localization: "https://goo.gl/maps/7koVGCL6v78g2oJM6",
-  },
-  {
-    city: getCountryByCode("EE"),
-    image:
-      "https://tbzaiuuumjycdssbuhdy.supabase.co/storage/v1/object/public/images/poles/pole_88.jpg",
-    localization: "https://goo.gl/maps/YFLBi7DLAR8pFEmE6",
-  },
-  {
-    city: getCountryByCode("EE"),
-    image:
-      "https://tbzaiuuumjycdssbuhdy.supabase.co/storage/v1/object/public/images/poles/pole_86.jpg",
-    localization: "https://goo.gl/maps/YYnccGRPsMA7Z5kf8",
   },
   {
     city: getCountryByCode("FR"),
@@ -322,26 +272,8 @@ const poles: GameData[] = [
   {
     city: getCountryByCode("LV"),
     image:
-      "https://tbzaiuuumjycdssbuhdy.supabase.co/storage/v1/object/public/images/poles/pole_91.jpg",
-    localization: "https://goo.gl/maps/7DLK37dFmhvdhCLU7",
-  },
-  {
-    city: getCountryByCode("LV"),
-    image:
       "https://tbzaiuuumjycdssbuhdy.supabase.co/storage/v1/object/public/images/poles/pole_92.jpg",
     localization: "https://goo.gl/maps/fzV8Kgb62NDv9rz5A",
-  },
-  {
-    city: getCountryByCode("LV"),
-    image:
-      "https://tbzaiuuumjycdssbuhdy.supabase.co/storage/v1/object/public/images/poles/pole_93.jpg",
-    localization: "https://goo.gl/maps/zqno9PrDDeHMr9cr9",
-  },
-  {
-    city: getCountryByCode("LV"),
-    image:
-      "https://tbzaiuuumjycdssbuhdy.supabase.co/storage/v1/object/public/images/poles/pole_94.jpg",
-    localization: "https://goo.gl/maps/DvZT5fZhBst3ESsn7",
   },
   {
     city: getCountryByCode("LV"),
@@ -354,18 +286,6 @@ const poles: GameData[] = [
     image:
       "https://tbzaiuuumjycdssbuhdy.supabase.co/storage/v1/object/public/images/poles/pole_96.jpg",
     localization: "https://goo.gl/maps/CTEg72PyqT4HCWrW6",
-  },
-  {
-    city: getCountryByCode("LV"),
-    image:
-      "https://tbzaiuuumjycdssbuhdy.supabase.co/storage/v1/object/public/images/poles/pole_97.jpg",
-    localization: "https://goo.gl/maps/STSr9BAGCjqmvSHGA",
-  },
-  {
-    city: getCountryByCode("LV"),
-    image:
-      "https://tbzaiuuumjycdssbuhdy.supabase.co/storage/v1/object/public/images/poles/pole_98.jpg",
-    localization: "https://goo.gl/maps/GUF47Pkrhu55s65n8",
   },
   {
     city: getCountryByCode("LT"),
@@ -389,12 +309,6 @@ const poles: GameData[] = [
   {
     city: getCountryByCode("LT"),
     image:
-      "https://tbzaiuuumjycdssbuhdy.supabase.co/storage/v1/object/public/images/poles/pole_101.jpg",
-    localization: "https://goo.gl/maps/2tfUzUzJjfJANtZy7",
-  },
-  {
-    city: getCountryByCode("LT"),
-    image:
       "https://tbzaiuuumjycdssbuhdy.supabase.co/storage/v1/object/public/images/poles/pole_102.jpg",
     localization: "https://goo.gl/maps/uunZzhqR8EdB2UZc9",
   },
@@ -405,18 +319,10 @@ const poles: GameData[] = [
     localization: "https://goo.gl/maps/6VzN1NhnBsXVj28QA",
   },
   {
-    city: getCountryByCode("LT"),
-    image:
-      "https://tbzaiuuumjycdssbuhdy.supabase.co/storage/v1/object/public/images/poles/pole_74.jpg",
-    localization:
-      "https://maps.google.com/maps?q=&layer=c&cbll=55.6906598,23.5014188",
-  },
-  {
     city: getCountryByCode("LU"),
     image:
       "https://tbzaiuuumjycdssbuhdy.supabase.co/storage/v1/object/public/images/poles/pole_16.jpg",
-    localization:
-      "https://maps.google.com/maps?q=&layer=c&cbll=49.6947641,6.3814985",
+    localization: "https://goo.gl/maps/Z7LwuiyM1vR9LQz4A",
   },
   {
     city: getCountryByCode("ME"),
@@ -460,18 +366,6 @@ const poles: GameData[] = [
       "https://maps.google.com/maps?q=&layer=c&cbll=50.5719284,18.0722919",
   },
   {
-    city: getCountryByCode("PL"),
-    image:
-      "https://tbzaiuuumjycdssbuhdy.supabase.co/storage/v1/object/public/images/poles/pole_121.jpg",
-    localization: "https://goo.gl/maps/zMAGyWe2ozf12QrC7",
-  },
-  {
-    city: getCountryByCode("PL"),
-    image:
-      "https://tbzaiuuumjycdssbuhdy.supabase.co/storage/v1/object/public/images/poles/pole_122.jpg",
-    localization: "https://goo.gl/maps/jRRSCG9NiKsPNwD6A",
-  },
-  {
     city: getCountryByCode("PT"),
     image:
       "https://tbzaiuuumjycdssbuhdy.supabase.co/storage/v1/object/public/images/poles/pole_22.jpg",
@@ -510,8 +404,7 @@ const poles: GameData[] = [
     city: getCountryByCode("ES"),
     image:
       "https://tbzaiuuumjycdssbuhdy.supabase.co/storage/v1/object/public/images/poles/pole_27.jpg",
-    localization:
-      "https://maps.google.com/maps?q=&layer=c&cbll=42.6571165,-5.0316744",
+    localization: "https://goo.gl/maps/xa78nShnwTnYDHzb8",
   },
   {
     city: getCountryByCode("SE"),
@@ -539,13 +432,6 @@ const poles: GameData[] = [
       "https://tbzaiuuumjycdssbuhdy.supabase.co/storage/v1/object/public/images/poles/pole_30.jpg",
     localization:
       "https://maps.google.com/maps?q=&layer=c&cbll=51.7556675,-1.6045062",
-  },
-  {
-    city: getCountryByCode("CA"),
-    image:
-      "https://tbzaiuuumjycdssbuhdy.supabase.co/storage/v1/object/public/images/poles/pole_31.jpg",
-    localization:
-      "https://maps.google.com/maps?q=&layer=c&cbll=47.2338085,-67.154481",
   },
   {
     city: getCountryByCode("CA"),
@@ -604,55 +490,6 @@ const poles: GameData[] = [
       "https://maps.google.com/maps?q=&layer=c&cbll=48.1819244,-69.6996105",
   },
   {
-    city: getCountryByCode("CA"),
-    image:
-      "https://tbzaiuuumjycdssbuhdy.supabase.co/storage/v1/object/public/images/poles/pole_49.jpg",
-    localization:
-      "https://maps.google.com/maps?q=&layer=c&cbll=49.8430994,-108.9417654",
-  },
-  {
-    city: getCountryByCode("CA"),
-    image:
-      "https://tbzaiuuumjycdssbuhdy.supabase.co/storage/v1/object/public/images/poles/pole_50.jpg",
-    localization:
-      "https://maps.google.com/maps?q=&layer=c&cbll=49.0620278,-58.3094432",
-  },
-  {
-    city: getCountryByCode("CA"),
-    image:
-      "https://tbzaiuuumjycdssbuhdy.supabase.co/storage/v1/object/public/images/poles/pole_51.jpg",
-    localization:
-      "https://maps.google.com/maps?q=&layer=c&cbll=49.2056083,-120.997196",
-  },
-  {
-    city: getCountryByCode("CA"),
-    image:
-      "https://tbzaiuuumjycdssbuhdy.supabase.co/storage/v1/object/public/images/poles/pole_52.jpg",
-    localization:
-      "https://maps.google.com/maps?q=&layer=c&cbll=47.3462338,-84.625865",
-  },
-  {
-    city: getCountryByCode("CA"),
-    image:
-      "https://tbzaiuuumjycdssbuhdy.supabase.co/storage/v1/object/public/images/poles/pole_53.jpg",
-    localization:
-      "https://maps.google.com/maps?q=&layer=c&cbll=51.6474664,-120.0431226",
-  },
-  {
-    city: getCountryByCode("CA"),
-    image:
-      "https://tbzaiuuumjycdssbuhdy.supabase.co/storage/v1/object/public/images/poles/pole_54.jpg",
-    localization:
-      "https://maps.google.com/maps?q=&layer=c&cbll=43.0688254,-79.9552534",
-  },
-  {
-    city: getCountryByCode("CA"),
-    image:
-      "https://tbzaiuuumjycdssbuhdy.supabase.co/storage/v1/object/public/images/poles/pole_59.jpg",
-    localization:
-      "https://maps.google.com/maps?q=&layer=c&cbll=49.9653842,-110.5853072",
-  },
-  {
     city: getCountryByCode("CW"),
     image:
       "https://tbzaiuuumjycdssbuhdy.supabase.co/storage/v1/object/public/images/poles/pole_32.jpg",
@@ -667,24 +504,10 @@ const poles: GameData[] = [
       "https://maps.google.com/maps?q=&layer=c&cbll=18.4687899,-69.8518128",
   },
   {
-    city: getCountryByCode("DO"),
-    image:
-      "https://tbzaiuuumjycdssbuhdy.supabase.co/storage/v1/object/public/images/poles/pole_34.jpg",
-    localization:
-      "https://maps.google.com/maps?q=&layer=c&cbll=19.4614324,-70.6801908",
-  },
-  {
     city: getCountryByCode("GT"),
     image:
       "https://tbzaiuuumjycdssbuhdy.supabase.co/storage/v1/object/public/images/poles/pole_124.jpg",
     localization: "https://goo.gl/maps/REoJeKSaDrjTfur98",
-  },
-  {
-    city: getCountryByCode("GL"),
-    image:
-      "https://tbzaiuuumjycdssbuhdy.supabase.co/storage/v1/object/public/images/poles/pole_35.jpg",
-    localization:
-      "https://maps.google.com/maps?q=&layer=c&cbll=64.1796956,-51.7222968",
   },
   {
     city: getCountryByCode("MX"),
@@ -718,20 +541,6 @@ const poles: GameData[] = [
       "https://tbzaiuuumjycdssbuhdy.supabase.co/storage/v1/object/public/images/poles/pole_61.jpg",
     localization:
       "https://maps.google.com/maps?q=&layer=c&cbll=-12.4688038,130.9555574",
-  },
-  {
-    city: getCountryByCode("AU"),
-    image:
-      "https://tbzaiuuumjycdssbuhdy.supabase.co/storage/v1/object/public/images/poles/pole_62.jpg",
-    localization:
-      "https://maps.google.com/maps?q=&layer=c&cbll=-41.2650766,146.4182924",
-  },
-  {
-    city: getCountryByCode("AU"),
-    image:
-      "https://tbzaiuuumjycdssbuhdy.supabase.co/storage/v1/object/public/images/poles/pole_63.jpg",
-    localization:
-      "https://maps.google.com/maps?q=&layer=c&cbll=-27.9994489,152.9869186",
   },
   {
     city: getCountryByCode("AU"),
@@ -789,37 +598,32 @@ const poles: GameData[] = [
   {
     city: getCountryByCode("CL"),
     image:
-      "https://tbzaiuuumjycdssbuhdy.supabase.co/storage/v1/object/public/images/poles/pole_39.jpg",
-    localization:
-      "https://maps.google.com/maps?q=&layer=c&cbll=-29.5118785,-71.2020419",
+      "https://tbzaiuuumjycdssbuhdy.supabase.co/storage/v1/object/public/images/poles/pole_39.png",
+    localization: "https://goo.gl/maps/grA5FF4avtBkKDDr7",
   },
   {
     city: getCountryByCode("CO"),
     image:
       "https://tbzaiuuumjycdssbuhdy.supabase.co/storage/v1/object/public/images/poles/pole_64.jpg",
-    localization:
-      "https://maps.google.com/maps?q=&layer=c&cbll=4.6362631,-74.3539027",
+    localization: "https://goo.gl/maps/2GakgMxcqzGZxAin9",
   },
   {
     city: getCountryByCode("CO"),
     image:
       "https://tbzaiuuumjycdssbuhdy.supabase.co/storage/v1/object/public/images/poles/pole_70.jpg",
-    localization:
-      "https://maps.google.com/maps?q=&layer=c&cbll=8.438805,-76.7801427",
+    localization: "https://goo.gl/maps/xkfRGj1SqKS2kbFq9",
   },
   {
     city: getCountryByCode("CO"),
     image:
       "https://tbzaiuuumjycdssbuhdy.supabase.co/storage/v1/object/public/images/poles/pole_75.jpg",
-    localization:
-      "https://maps.google.com/maps?q=&layer=c&cbll=8.7467292,-75.4910947",
+    localization: "https://goo.gl/maps/bBz5nJBA1vRrLkUF6",
   },
   {
     city: getCountryByCode("EC"),
     image:
       "https://tbzaiuuumjycdssbuhdy.supabase.co/storage/v1/object/public/images/poles/pole_40.jpg",
-    localization:
-      "https://maps.google.com/maps?q=&layer=c&cbll=-1.3467122,-80.5821687",
+    localization: "https://goo.gl/maps/w2XZZST5rPDQBLKo8",
   },
   {
     city: getCountryByCode("PE"),

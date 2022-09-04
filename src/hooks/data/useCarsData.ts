@@ -43,6 +43,7 @@ const useCarsData = (): GameData[] => {
         "https://tbzaiuuumjycdssbuhdy.supabase.co/storage/v1/object/public/images/car5.jpg",
       localization:
         "https://maps.google.com/maps?q=&layer=c&cbll=9.0180809,7.325311",
+      hint: t("nigeriaCar"),
     },
     {
       city: getCountryByCode("SN"),
@@ -57,7 +58,7 @@ const useCarsData = (): GameData[] => {
         "https://tbzaiuuumjycdssbuhdy.supabase.co/storage/v1/object/public/images/car7.jpg",
       localization:
         "https://maps.google.com/maps?q=&layer=c&cbll=-22.7783239,31.195407",
-      hint: "Este carro faz a cobertura do 'Parque Nacional Kruger' em South Africa",
+      hint: t("krugerParkSouthAfrica"),
     },
     {
       city: getCountryByCode("UG"),
@@ -128,8 +129,7 @@ const useCarsData = (): GameData[] => {
       city: getCountryByCode("IE"),
       image:
         "https://tbzaiuuumjycdssbuhdy.supabase.co/storage/v1/object/public/images/car16.jpg",
-      localization:
-        "https://maps.google.com/maps?q=&layer=c&cbll=53.3765233,-6.2543704",
+      localization: "https://goo.gl/maps/CMSPTrpFH5UUz8Ex5",
     },
     {
       city: getCountryByCode("UA"),
@@ -149,8 +149,7 @@ const useCarsData = (): GameData[] => {
       city: getCountryByCode("CW"),
       image:
         "https://tbzaiuuumjycdssbuhdy.supabase.co/storage/v1/object/public/images/car19.jpg",
-      localization:
-        "https://maps.google.com/maps?q=&layer=c&cbll=12.1816696,-68.991764",
+      localization: "https://goo.gl/maps/2eEzs3gSD9iZDmX29",
     },
     {
       city: getCountryByCode("DO"),
@@ -236,7 +235,7 @@ const useCarsData = (): GameData[] => {
       image:
         "https://tbzaiuuumjycdssbuhdy.supabase.co/storage/v1/object/public/images/car31.jpg",
       localization: "https://goo.gl/maps/usstoSjN9mLpm6jS8",
-      hint: t("tauSamoaCar"),
+      hint: t("manuSamoaCar"),
     },
     {
       city: getCountryByCode("RE"),
