@@ -1,9 +1,18 @@
+import { darkScrollbar } from "@mui/material";
 import { createTheme } from "@mui/material/styles";
 
 const fontFamilyTitle = ["IBM Plex Mono", "monospace"].join(",");
 
 // Create a theme instance.
 const theme = createTheme({
+  components: {
+    MuiCssBaseline: {
+      styleOverrides: (themeParam) => ({
+        body: themeParam.palette.mode === "dark" ? darkScrollbar() : null,
+      }),
+    },
+  },
+
   palette: {
     mode: "dark",
     primary: {
