@@ -1,13 +1,14 @@
 import { FC, useCallback, useEffect, useMemo, useState } from "react";
 
-import { Box, Typography } from "@mui/material";
+import { Box, Stack, Typography, Button } from "@mui/material";
 
 import { CountryType } from "../../data/countries";
 import { SlugContinents } from "../../data/continents";
 
 import QuestionCard from "../QuestionCard";
 import GameFinished from "../GameFinished";
-import { GameData, GameQuestion } from "../../interfaces/Game";
+import { GameData, GameListSlugs, GameQuestion } from "../../interfaces/Game";
+import { KeyboardBackspace } from "@mui/icons-material";
 
 const getRandomGamesQuestions = (
   dataGame: GameData[],
@@ -41,6 +42,7 @@ interface CarGameProps {
   dataGame: GameData[];
   title: string;
   continentSlug: SlugContinents | "all";
+  onResetGame: () => void;
 }
 
 const GameEngine: FC<CarGameProps> = ({
@@ -48,6 +50,7 @@ const GameEngine: FC<CarGameProps> = ({
   dataGame,
   title,
   continentSlug,
+  onResetGame,
 }) => {
   quantity = quantity >= dataGame.length ? dataGame.length : quantity;
   const [gameQuestions, setGameQuestions] = useState(() =>
@@ -111,9 +114,13 @@ const GameEngine: FC<CarGameProps> = ({
 
   return (
     <Box>
-      <Typography variant="h6" gutterBottom>
-        {title}
-      </Typography>
+      <Stack direction="row" gap={1} alignItems="center" mb={1}>
+        <Button variant="outlined" onClick={onResetGame} size="small">
+          <KeyboardBackspace />
+        </Button>
+
+        <Typography variant="h6">{title}</Typography>
+      </Stack>
 
       {!finishedGame && (
         <QuestionCard

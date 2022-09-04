@@ -12,10 +12,11 @@ import {
   Dialog,
   DialogContent,
   DialogTitle,
+  IconButton,
   Stack,
   Typography,
 } from "@mui/material";
-import { Replay } from "@mui/icons-material";
+import { Close, Replay } from "@mui/icons-material";
 import { green, red } from "@mui/material/colors";
 
 import { GameQuestion } from "../../interfaces/Game";
@@ -92,7 +93,19 @@ const GameFinished: FC<GameFinishedProps> = ({
         fullWidth
         scroll="body"
       >
-        <DialogTitle>{t("yourResults")}</DialogTitle>
+        <DialogTitle>
+          <Stack
+            direction="row"
+            alignItems="center"
+            justifyContent="space-between"
+          >
+            {t("yourResults")}
+
+            <IconButton onClick={() => setShowResult(false)}>
+              <Close />
+            </IconButton>
+          </Stack>
+        </DialogTitle>
 
         <DialogContent dividers>
           <Box

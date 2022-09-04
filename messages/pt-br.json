@@ -2,6 +2,10 @@
   "Index": {
     "title": "Jogos"
   },
+  "Footer": {
+    "description": "Aplicação feita pela comunidade brasileira de geoguessr, na intenção de treinar habilidades em diversos metas e promover o estudo de diferentes países.",
+    "reference": "Referência"
+  },
   "Games": {
     "more": "Ler mais",
     "finishedGameTitle": "Jogo finalizado",

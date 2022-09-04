@@ -1,7 +1,7 @@
 import { FC, FormEvent, useEffect, useRef, useState } from "react";
 import { useTranslations } from "next-intl";
 
-import { GpsFixed } from "@mui/icons-material";
+import { Close, GpsFixed } from "@mui/icons-material";
 import {
   Autocomplete,
   Box,
@@ -22,7 +22,7 @@ import {
 import { green, red } from "@mui/material/colors";
 import Image from "next/image";
 
-import countries, { CountryType } from "../../data/countries";
+import { CountryType } from "../../data/countries";
 import CountryFlag from "../CountryFlag";
 import { filterCountriesByContinent } from "../../utils/filterGameByContinent";
 
@@ -168,6 +168,12 @@ const QuestionCard: FC<QuestionCardProps> = ({
         }}
       >
         <Box sx={modalZoomImageStyles} onClick={() => setZoomImage(false)}>
+          <IconButton
+            onClick={() => setZoomImage(false)}
+            sx={{ position: "absolute", top: 8, right: 8, zIndex: 9 }}
+          >
+            <Close />
+          </IconButton>
           <Image
             src={gameQuestion.image}
             layout="fill"

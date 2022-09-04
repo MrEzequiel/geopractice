@@ -21,7 +21,7 @@ const Home: NextPage = () => {
   const gameList = useGameListData();
 
   return (
-    <Container maxWidth="lg" sx={{ mt: 3 }}>
+    <Container maxWidth="lg">
       <Typography variant="h4" fontWeight={600} component="h1">
         {t("title")}
       </Typography>

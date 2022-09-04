@@ -5,34 +5,22 @@ import {
   IconButton,
   Stack,
   Toolbar,
-  Typography,
   Link as LinkMui,
 } from "@mui/material";
-import Link from "next/link";
-import LocaleSwitcher from "../LocaleSwitcher";
 import { GitHub } from "@mui/icons-material";
+
+import Logo from "../Logo";
+import LocaleSwitcher from "../LocaleSwitcher";
 
 const Header: FC = () => {
   return (
     <AppBar position="static">
       <Container maxWidth="xl">
-        <Toolbar disableGutters sx={{ justifyContent: "space-between" }}>
-          <Link href="/" passHref>
-            <Typography
-              variant="h6"
-              noWrap
-              component="a"
-              sx={{
-                mr: 2,
-                fontFamily: "monospace",
-                fontWeight: 700,
-                color: "inherit",
-                textDecoration: "none",
-              }}
-            >
-              GeoPractice
-            </Typography>
-          </Link>
+        <Toolbar
+          disableGutters
+          sx={{ justifyContent: "space-between", gap: 2 }}
+        >
+          <Logo />
 
           <Stack direction="row" alignItems="center" gap={1}>
             <LinkMui

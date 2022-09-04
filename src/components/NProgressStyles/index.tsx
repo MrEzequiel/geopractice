@@ -7,6 +7,11 @@ const NProgressStyles: FC = () => {
   return (
     <GlobalStyles
       styles={{
+        "#__next": {
+          minHeight: "100vh",
+          display: "flex",
+          flexDirection: "column",
+        },
         "#nprogress": {
           pointerEvents: "none",
         },
