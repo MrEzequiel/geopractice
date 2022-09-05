@@ -22,7 +22,8 @@
     "selectCountry": "Selecione o país",
     "answerQuestion": "Enviar",
     "flagDescription": "Bandeira do país",
-    "localizationLabel": "Localizações"
+    "localizationLabel": "Localizações",
+    "seeLocation": "Ver localização"
   },
   "ContinentLabel": {
     "america": "América",
@@ -59,10 +60,12 @@
     "manuSamoaCar": "(Manu'a) O caminhão aqui é cinza escuro. Ocasionalmente, pode parecer preto sob a iluminação certa.",
     "reunionCar": "O carro de Reunion parece bastante com de Ghana, mas possui retrovisores evidentes e sua fita está no última barra do lado direito."
   },
-  "GameListCar": {
+  "GameList": {
     "goggleCarTitle": "Google Car",
     "googleCarDescription": "Em diversas coberturas do google é possível ver um padrão de carros, sabendo disso é capaz saber instantaneamente em qual região ou país você está localizado. Esse jogo consiste em você treinar seu reconhecimento.",
     "poleTitle": "Postes",
-    "poleDescription": "Este quiz inclui diferentes tipos de postes comuns de todo o mundo. Treine suas habilidades para identificar postes e ter palpites mais certeiros."
+    "poleDescription": "Este quiz inclui diferentes tipos de postes comuns de todo o mundo. Treine suas habilidades para identificar postes e ter palpites mais certeiros.",
+    "architectureTitle": "Arquiteturas",
+    "architectureDescription": "As principais, comuns e distintas arquiteturas pelo mundo"
   }
 }

@@ -51,11 +51,17 @@ const GameCard: FC<GameCardProps> = ({ game }) => {
           direction="row"
           position="relative"
           px={2}
+          gap={0.5}
           alignItems="center"
           justifyContent="space-between"
           bottom={-20}
         >
-          <Typography variant="h5" fontWeight={600} component="div">
+          <Typography
+            variant="h5"
+            fontWeight={600}
+            sx={{ overflow: "hidden", textOverflow: "ellipsis" }}
+            component="div"
+          >
             {game.name}
           </Typography>
 
