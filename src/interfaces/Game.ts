@@ -3,11 +3,11 @@ import { CountryType } from "../data/countries";
 export interface GameData {
   city: CountryType;
   image: string;
-  localization: string;
+  localization?: string;
   hint?: string;
 }
 
-export type GameListSlugs = "car" | "pole";
+export type GameListSlugs = "car" | "pole" | "architecture";
 
 export interface GameInformation {
   name: string;

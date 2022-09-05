@@ -16,6 +16,7 @@ import {
   Modal,
   Stack,
   TextField,
+  Tooltip,
   Typography,
   Zoom,
 } from "@mui/material";
@@ -209,15 +210,19 @@ const QuestionCard: FC<QuestionCardProps> = ({
                 {gameQuestion.city.label}
               </>
 
-              <Link
-                href={gameQuestion.localization}
-                target="_blank"
-                sx={{ ml: 1 }}
-              >
-                <IconButton size="small">
-                  <GpsFixed fontSize="small" />
-                </IconButton>
-              </Link>
+              {!!gameQuestion.localization && (
+                <Tooltip title={t("seeLocation")}>
+                  <Link
+                    href={gameQuestion.localization}
+                    target="_blank"
+                    sx={{ ml: 1 }}
+                  >
+                    <IconButton size="small">
+                      <GpsFixed fontSize="small" />
+                    </IconButton>
+                  </Link>
+                </Tooltip>
+              )}
             </Stack>
 
             {gameQuestion.hint && (
