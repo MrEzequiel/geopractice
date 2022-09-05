@@ -3,13 +3,20 @@ import poles from "../../data/pole";
 import useCarsData from "./useCarsData";
 import { useTranslations } from "next-intl";
 import useArchitectureData from "./useArchitectureData";
+import useBollardData from "./useBollardData";
 
-export const availableSlugs: GameListSlugs[] = ["car", "pole", "architecture"];
+export const availableSlugs: GameListSlugs[] = [
+  "car",
+  "pole",
+  "architecture",
+  "bollard",
+];
 
 const useGameListData = (): GameInformation[] => {
   const t = useTranslations("GameList");
   const cars = useCarsData();
   const architectures = useArchitectureData();
+  const bollards = useBollardData();
 
   return [
     {
@@ -35,6 +42,14 @@ const useGameListData = (): GameInformation[] => {
       data: architectures,
       image:
         "https://tbzaiuuumjycdssbuhdy.supabase.co/storage/v1/object/public/images/architecture/architecture-cover.jpg",
+    },
+    {
+      name: t("bollardTitle"),
+      description: t("bollardDescription"),
+      slug: "bollard",
+      data: bollards,
+      image:
+        "https://tbzaiuuumjycdssbuhdy.supabase.co/storage/v1/object/public/images/bollard/bollard-cover.jpg",
     },
   ];
 };
