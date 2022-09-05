@@ -40,7 +40,6 @@
     "gameSettings": "Settings",
     "allContinent": "All"
   },
-
   "CarDataHints": {
     "botswana": "You will see the back of the car, and its clearly a white vehicle. This is the same vehicle that did all of Southern Africa.",
     "ghanaShaiHills": "This car coverage the reserve: 'Shai Hills Production Reserve' in Ghana.",
@@ -67,6 +66,8 @@
     "poleTitle": "Poles",
     "poleDescription": "This quiz includes different types of common poles from around the world. Train your skills to identify poles and make more accurate guesses.",
     "architectureTitle": "Architectures",
-    "architectureDescription": "The main, common and different architectures around the world"
+    "architectureDescription": "The main, common and different architectures around the world",
+    "bollardTitle": "Bollard",
+    "bollardDescription": "This quiz includes all types of bollards available in every region or country. There is also some snow poles, waystones and barricades."
   }
 }
