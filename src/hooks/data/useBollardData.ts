@@ -1297,28 +1297,28 @@ const useBollardData = (): GameData[] => {
     {
       image:
         "https://tbzaiuuumjycdssbuhdy.supabase.co/storage/v1/object/public/images/bollard/bollard_192",
-      city: getCountryByCode("Russia"),
+      city: getCountryByCode("RU"),
       localization:
         "https://maps.google.com/maps?q=&layer=c&cbll=54.1071527,121.6330001",
     },
     {
       image:
         "https://tbzaiuuumjycdssbuhdy.supabase.co/storage/v1/object/public/images/bollard/bollard_193",
-      city: getCountryByCode("Russia"),
+      city: getCountryByCode("RU"),
       localization:
         "https://maps.google.com/maps?q=&layer=c&cbll=56.4968761,67.6513479",
     },
     {
       image:
         "https://tbzaiuuumjycdssbuhdy.supabase.co/storage/v1/object/public/images/bollard/bollard_194",
-      city: getCountryByCode("Russia"),
+      city: getCountryByCode("RU"),
       localization:
         "https://maps.google.com/maps?q=&layer=c&cbll=58.3532759,30.9661247",
     },
     {
       image:
         "https://tbzaiuuumjycdssbuhdy.supabase.co/storage/v1/object/public/images/bollard/bollard_195",
-      city: getCountryByCode("Russia"),
+      city: getCountryByCode("RU"),
       localization:
         "https://maps.google.com/maps?q=&layer=c&cbll=61.789454,33.8470889",
     },
@@ -1710,7 +1710,7 @@ const useBollardData = (): GameData[] => {
     {
       image:
         "https://tbzaiuuumjycdssbuhdy.supabase.co/storage/v1/object/public/images/bollard/bollard_252",
-      city: getCountryByCode("Russia"),
+      city: getCountryByCode("RU"),
       localization: "https://goo.gl/maps/P18Jm3VtDXhebLgKA",
     },
     {
@@ -1904,7 +1904,7 @@ const useBollardData = (): GameData[] => {
     {
       image:
         "https://tbzaiuuumjycdssbuhdy.supabase.co/storage/v1/object/public/images/bollard/bollard_282",
-      city: getCountryByCode("Russia"),
+      city: getCountryByCode("RU"),
       localization:
         "https://maps.google.com/maps?q=&layer=c&cbll=57.2872677,52.0458643",
     },
