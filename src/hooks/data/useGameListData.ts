@@ -5,6 +5,7 @@ import { useTranslations } from "next-intl";
 import useArchitectureData from "./useArchitectureData";
 import useBollardData from "./useBollardData";
 import useSignPostsData from "./useSignPostsData";
+import useStreetSignData from "./useStreetSignData";
 
 export const availableSlugs: GameListSlugs[] = [
   "car",
@@ -12,6 +13,7 @@ export const availableSlugs: GameListSlugs[] = [
   "architecture",
   "bollard",
   "sign-posts",
+  "street-sign",
 ];
 
 const useGameListData = (): GameInformation[] => {
@@ -20,6 +22,7 @@ const useGameListData = (): GameInformation[] => {
   const architectures = useArchitectureData();
   const bollards = useBollardData();
   const signPosts = useSignPostsData();
+  const streetSignData = useStreetSignData();
 
   return [
     {
@@ -61,6 +64,14 @@ const useGameListData = (): GameInformation[] => {
       data: signPosts,
       image:
         "https://tbzaiuuumjycdssbuhdy.supabase.co/storage/v1/object/public/images/post/posts-cover.jpg",
+    },
+    {
+      name: t("streetSignTitle"),
+      description: t("streetSignDescription"),
+      slug: "street-sign",
+      data: streetSignData,
+      image:
+        "https://tbzaiuuumjycdssbuhdy.supabase.co/storage/v1/object/public/images/street-sign/street-sign-cover.jpg",
     },
   ];
 };

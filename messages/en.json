@@ -70,6 +70,8 @@
     "bollardTitle": "Bollard",
     "bollardDescription": "This quiz includes all types of bollards available in every region or country. There is also some snow poles, waystones and barricades.",
     "signPostsTitle": "Sign posts",
-    "signPostsDescription": "Different types of sign posts around the world."
+    "signPostsDescription": "Different types of sign posts around the world.",
+    "streetSignTitle": "Street sign",
+    "streetSignDescription": "Street signs around the world, some countries are easy to identify by their sign design or common street abbreviations in several languages."
   }
 }

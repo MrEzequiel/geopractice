@@ -12,7 +12,8 @@ export type GameListSlugs =
   | "pole"
   | "architecture"
   | "bollard"
-  | "sign-posts";
+  | "sign-posts"
+  | "street-sign";
 
 export interface GameInformation {
   name: string;

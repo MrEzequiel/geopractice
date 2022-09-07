@@ -70,6 +70,8 @@
     "bollardTitle": "Bollard",
     "bollardDescription": "Este quiz inclui todos os tipos de bollards disponivel em cara região ou país. Inclusive postes de neve, waystones, barricadas e uma árvore",
     "signPostsTitle": "Placas de sinalização",
-    "signPostsDescription": "Diferentes tipos de postes de sinalização pelo mundo."
+    "signPostsDescription": "Diferentes tipos de postes de sinalização pelo mundo.",
+    "streetSignTitle": "Sinal de rua",
+    "streetSignDescription": "Sinalizações de rua pelo mundo, alguns países são de fácil identificação pelo design de sua placa ou por abreviações comuns de rua em várias línguas."
   }
 }
