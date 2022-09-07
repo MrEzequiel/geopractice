@@ -4,12 +4,14 @@ import useCarsData from "./useCarsData";
 import { useTranslations } from "next-intl";
 import useArchitectureData from "./useArchitectureData";
 import useBollardData from "./useBollardData";
+import useSignPostsData from "./useSignPostsData";
 
 export const availableSlugs: GameListSlugs[] = [
   "car",
   "pole",
   "architecture",
   "bollard",
+  "sign-posts",
 ];
 
 const useGameListData = (): GameInformation[] => {
@@ -17,6 +19,7 @@ const useGameListData = (): GameInformation[] => {
   const cars = useCarsData();
   const architectures = useArchitectureData();
   const bollards = useBollardData();
+  const signPosts = useSignPostsData();
 
   return [
     {
@@ -50,6 +53,14 @@ const useGameListData = (): GameInformation[] => {
       data: bollards,
       image:
         "https://tbzaiuuumjycdssbuhdy.supabase.co/storage/v1/object/public/images/bollard/bollard-cover.jpg",
+    },
+    {
+      name: t("signPostsTitle"),
+      description: t("signPostsDescription"),
+      slug: "sign-posts",
+      data: signPosts,
+      image:
+        "https://tbzaiuuumjycdssbuhdy.supabase.co/storage/v1/object/public/images/post/posts-cover.jpg",
     },
   ];
 };

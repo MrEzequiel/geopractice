@@ -7,7 +7,12 @@ export interface GameData {
   hint?: string;
 }
 
-export type GameListSlugs = "car" | "pole" | "architecture" | "bollard";
+export type GameListSlugs =
+  | "car"
+  | "pole"
+  | "architecture"
+  | "bollard"
+  | "sign-posts";
 
 export interface GameInformation {
   name: string;
